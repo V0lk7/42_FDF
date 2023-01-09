@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/03 13:35:38 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/09 18:19:39 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FDF_H
 
 #include "mlx.h"
+#include <math.h>
+#include "libft.h"
+#include <stdio.h>
+
+#define PI 3.1415926
 
 typedef struct	s_data 
 {
@@ -24,20 +29,44 @@ typedef struct	s_data
 	int		endian;
 }	t_data;
 
+//	Coordinate of each point	//
+typedef struct	s_dot
+{
+	int	x;
+	int	y;
+	int	z;
+	int	x0;
+	int	y0;
+	int	z0;
+	int	color;
+}	t_dot;
+
+//	Utilities to draw line		//
 typedef	struct	s_line
 {
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
+	float	x0;
+	float	y0;
 	int		dx;
 	int		dy;
-	int		steps;
 	float	xinc;
 	float	yinc;
-	int		color;
 }	t_line;
 
-t_line	ft_insert_points(int xa, int ya, int xb, int yb);
+//------fdf_draw.c-------------------------------------//
+void	ft_pixel_put(t_data *data, int x, int y, int color);
+t_dot	ft_insert_points(int xa, int ya, int za);
+void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2);
+//------fdf_revise_x.c---------------------------------//
+void	ft_rotation_x(t_dot *dot, float angle);
+int		ft_calc_rx_y(int y, int z, float angle);
+int		ft_calc_rx_z(int y, int z, float angle);
+//------fdf_revise_y.c---------------------------------//
+void	ft_rotation_y(t_dot *dot, float angle);
+int		ft_calc_ry_x(int x, int z, float angle);
+int		ft_calc_ry_z(int x, int z, float angle);
+//------fdf_revise_z.c---------------------------------//
+void	ft_rotation_z(t_dot *dot, float angle);
+int		ft_calc_rz_x(int x, int y, float angle);
+int		ft_calc_rz_y(int x, int y, float angle);
 
 #endif

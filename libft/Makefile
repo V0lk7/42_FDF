@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/05 09:20:08 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/09 14:10:55 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,20 +72,17 @@ $(NAME): $(OBJS)
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
 	@$(DIRDUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	$(info CREATED $@)
 
 -include $(DEPS)
 
 ###############################################################################
 
 clean:
-	@rm -rf $(BUILD_DIR)
-	$(info $@ FINISH)
+	rm -rf $(BUILD_DIR)
 .PHONY: clean
 
 fclean: clean
-	@rm -rf $(NAME)
-	$(info $@ FINISH)
+	rm -rf $(NAME)
 .PHONY: fclean
 
 re: fclean all

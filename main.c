@@ -6,54 +6,17 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:27:19 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/03 15:35:25 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/09 18:24:25 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
-#include <stdlib.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void static	ft_display(t_dot *dot)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	ft_draw_line(t_data *data, t_line *line)
-{
-	int	i;
-
-	i = 0;
-	line->dx = line->x2 - line->x1;
-	line->dy = line->y2 - line->y1;
-	if (abs(line->dx) > abs(line->dx))
-		line->steps = abs(line->dx);
-	else
-		line->steps = abs(line->dy);
-	line->xinc = line->dx / line->steps;
-	line->yinc = line->dy / line->steps;
-	while (i < line->steps)
-	{
-		my_mlx_pixel_put(data, round(line->x1), round(line->y1), line->color);
-		line->x1 += line->xinc;
-		line->y1 += line->yinc;
-		i++;
-	}
-}
-
-t_line	ft_insert_points(int xa, int ya, int xb, int yb)
-{
-	t_line	line;
-
-	line.x1 = xa;
-	line.x2 = xb;
-	line.y1 = ya;
-	line.y2 = yb;
-	line.color = 0x0000FF00;
-	return (line);
+	printf("x = %i\t", dot->x);
+	printf("y = %i\t", dot->y);
+	printf("z = %i\n", dot->z);
 }
 
 int	main(void)
@@ -61,21 +24,37 @@ int	main(void)
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
-	t_line	line;
+	t_dot	dot1;
+	t_dot	dot2;
+	t_dot	dot3;
+	t_dot	dot4;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 720, 480, "Hello world!");	
-	img.img = mlx_new_image(mlx, 720, 480);
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Fuck this shit !");	
+	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);	
-	line = ft_insert_points(100, 10, 50, 60);
-	ft_draw_line(&img, &line);
-	line = ft_insert_points(50, 60, 100, 110);
-	ft_draw_line(&img, &line);
-	line = ft_insert_points(100, 110, 150, 60);
-	ft_draw_line(&img, &line);
-	line = ft_insert_points(150, 60, 100, 10);
-	ft_draw_line(&img, &line);
+	dot1 = ft_insert_points(300, 200, 0);
+	dot2 = ft_insert_points(600, 200, 0);
+	dot3 = ft_insert_points(300, 600, 0);
+	dot4 = ft_insert_points(600, 600, 0);
+	ft_display(&dot1);
+	ft_display(&dot2);
+	ft_dda(&img, &dot1, &dot2);
+	ft_dda(&img, &dot1, &dot3);
+	ft_dda(&img, &dot3, &dot4);
+	ft_dda(&img, &dot2, &dot4);
+	ft_rotation_z(&dot1, 10);
+	ft_rotation_z(&dot2, 10);
+	ft_rotation_z(&dot3, 10);
+	ft_rotation_z(&dot4, 10);
+	dot1.color = 0x00FF0000;
+	dot2.color = 0x00FF0000;
+	dot3.color = 0x00FF0000;
+	dot4.color = 0x00FF0000;
+	ft_dda(&img, &dot1, &dot2);
+	ft_dda(&img, &dot1, &dot3);
+	ft_dda(&img, &dot3, &dot4);
+	ft_dda(&img, &dot2, &dot4);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);	
-
 }

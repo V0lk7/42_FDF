@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/03 09:09:13 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/09 14:12:56 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ INCLUDES	=	libft/include	\
 BUILD_DIR 	= 	.build
 
 SRCS 		=	main.c \
+				fdf_draw.c		fdf_revise_x.c	\
+				fdf_revise_y.c	fdf_revise_z.c	\
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -56,19 +58,17 @@ DIRDUP 		= 	mkdir -p $(@D)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
-	$(MAKE) -C libft/
-	$(MAKE) -C minilibx-linux/
+	@$(MAKE) -C $(dir $@)
 
 $(BUILD_DIR)/%.o : %.c
 	@$(DIRDUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	$(info CREATED $@)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
--include $(DEPS)
+-include $(DEPS) test.mk
 
 ###############################################################################
 
