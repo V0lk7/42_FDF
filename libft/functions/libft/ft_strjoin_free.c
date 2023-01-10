@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 09:51:30 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 15:27:42 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/10 14:02:42 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/10 14:13:43 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_gnl(char *s1, char *s2)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	size_alloc;
 	char	*new_s;
 	size_t	size_srcs;
 
-	if (!s1 && !s2)
-		return (NULL);
-	size_alloc = ft_strlen(s1) + ft_strlen(s2) + 1;
-	new_s = ft_calloc(sizeof(char), size_alloc);
+	size_alloc = ft_strlen(s1) + ft_strlen(s2);
+	new_s = malloc(size_alloc * (sizeof(char) + 1));
 	if (!new_s)
+	{
+		free (s1);
 		return (NULL);
+	}
 	size_alloc = ft_strlen(s1) + 1;
 	ft_strlcpy(new_s, s1, size_alloc);
 	size_alloc = ft_strlen(new_s);

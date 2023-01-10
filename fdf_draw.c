@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:10:32 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/09 18:13:56 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 10:31:06 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@ t_dot	ft_insert_points(int xa, int ya, int za)
 	dot.x = xa;
 	dot.y = ya;
 	dot.z = za;
-	dot.x0 = 960;
-	dot.y0 = 540;
-	dot.z0 = 0;
-	dot.color = 0x0000FF00;
+	dot.x1 = xa;
+	dot.y1 = ya;
+	dot.z1 = za;
+	dot.i = 960;
+	dot.j = 540;
+	dot.k = 0;
+	dot.color = 0xFFFFFFFF;
 	return (dot);
 }
 
@@ -44,17 +47,17 @@ void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2)
 	t_line	params;	
 
 	steps = 0;
-	params.x0 = dot1->x;
-	params.y0 = dot1->y;
-	params.dx = dot2->x - dot1->x;
-	params.dy = dot2->y - dot1->y;
+	params.x0 = dot1->x1;
+	params.y0 = dot1->y1;
+	params.dx = dot2->x1 - dot1->x1;
+	params.dy = dot2->y1 - dot1->y1;
 	if (abs(params.dx) > abs(params.dy))
 		steps = abs(params.dx);
 	else
 		steps = abs(params.dy);
 	params.xinc = params.dx / steps;
 	params.yinc = params.dy / steps;
-	while (steps > 0)
+	while (steps >= 0)
 	{
 		ft_pixel_put(img, params.x0, params.y0, dot1->color);
 		params.x0 += params.xinc;

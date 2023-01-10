@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_revise_x.c                                     :+:      :+:    :+:   */
+/*   fdf_rotate_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:36:16 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:09 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 10:33:30 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	ft_rotation_x(t_dot *dot, float angle)
 	int		ytemp;
 
 	angle *= PI / 180;
-	ytemp = dot->y;
-	dot->y = ft_calc_rx_y(dot->y, dot->z, angle);
-	dot->z = ft_calc_rx_z(ytemp, dot->z, angle);
+	ytemp = dot->y - dot->j;
+	dot->y1 = ft_calc_rx_y(ytemp, dot->z, angle) + dot->j;
+	dot->z1 = ft_calc_rx_z(ytemp, dot->z, angle);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/09 18:19:39 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:28:55 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ typedef struct	s_dot
 	int	x;
 	int	y;
 	int	z;
-	int	x0;
-	int	y0;
-	int	z0;
+	int	x1;
+	int	y1;
+	int	z1;
+	int	i;
+	int	j;
+	int	k;
 	int	color;
 }	t_dot;
 
@@ -68,5 +71,10 @@ int		ft_calc_ry_z(int x, int z, float angle);
 void	ft_rotation_z(t_dot *dot, float angle);
 int		ft_calc_rz_x(int x, int y, float angle);
 int		ft_calc_rz_y(int x, int y, float angle);
-
+//------fdf_translate.c--------------------------------//
+void	ft_translate_x(t_dot *dot, int shift);
+void	ft_translate_y(t_dot *dot, int shift);
+//------fdf_parsing.c--------------------------------//
+t_bool	ft_valid_file(char *argv);
+char	*ft_get_map(char *argv);
 #endif

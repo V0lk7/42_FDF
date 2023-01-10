@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:38:29 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/24 09:53:13 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:27:21 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	ft_flag(char *buffer)
 {

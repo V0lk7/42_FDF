@@ -6,55 +6,38 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:27:19 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/09 18:24:25 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:59:35 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void static	ft_display(t_dot *dot)
-{
-	printf("x = %i\t", dot->x);
-	printf("y = %i\t", dot->y);
-	printf("z = %i\n", dot->z);
-}
+#include <string.h>
 
 int	main(void)
+{
+	char	*str = malloc(sizeof(char) * 9);
+	char	*str2 = "ton pere";
+	
+	str = "je suis ";
+	str = ft_strjoin_free(str, str2);
+	printf("%s\n", str);
+	return (0);
+}
+/*
 {
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
-	t_dot	dot1;
-	t_dot	dot2;
-	t_dot	dot3;
-	t_dot	dot4;
+	t_dot	**list;
 
+	list = ft_organise(argc, argv);
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Fuck this shit !");	
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hey hey hey boy");
 	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);	
-	dot1 = ft_insert_points(300, 200, 0);
-	dot2 = ft_insert_points(600, 200, 0);
-	dot3 = ft_insert_points(300, 600, 0);
-	dot4 = ft_insert_points(600, 600, 0);
-	ft_display(&dot1);
-	ft_display(&dot2);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	dot1 = ft_insert_points(960, 300, 0);
+	dot2 = ft_insert_points(960, 300, 0);
 	ft_dda(&img, &dot1, &dot2);
-	ft_dda(&img, &dot1, &dot3);
-	ft_dda(&img, &dot3, &dot4);
-	ft_dda(&img, &dot2, &dot4);
-	ft_rotation_z(&dot1, 10);
-	ft_rotation_z(&dot2, 10);
-	ft_rotation_z(&dot3, 10);
-	ft_rotation_z(&dot4, 10);
-	dot1.color = 0x00FF0000;
-	dot2.color = 0x00FF0000;
-	dot3.color = 0x00FF0000;
-	dot4.color = 0x00FF0000;
-	ft_dda(&img, &dot1, &dot2);
-	ft_dda(&img, &dot1, &dot3);
-	ft_dda(&img, &dot3, &dot4);
-	ft_dda(&img, &dot2, &dot4);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);	
-}
+	mlx_loop(mlx);
+}*/

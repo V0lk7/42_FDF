@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:21:46 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 13:46:04 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:25:39 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 // BUFFER FOR GNL
 # ifndef BUFFER_SIZE
@@ -60,6 +61,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_free(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char *s, char c);
 char		*ft_itoa(int n);

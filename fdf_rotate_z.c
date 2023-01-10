@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_revise_y.c                                     :+:      :+:    :+:   */
+/*   fdf_rotate_z.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 10:36:31 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/09 13:38:25 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/09 08:17:14 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/10 10:33:39 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_calc_ry_x(int x, int z, float angle)
+int	ft_calc_rz_x(int x, int y, float angle)
 {
-	float	sin;
 	float	cos;
+	float	sin;
 	int		result;
 
-	sin = sinf(angle);
 	cos = cosf(angle);
-	result = round(x * cos + (z * sin));
+	sin = sinf(angle);
+	result = round(x * cos - y * sin);
 	return (result);
 }
 
-int	ft_calc_ry_z(int x, int z, float angle)
+int	ft_calc_rz_y(int x, int y, float angle)
 {
-	float	sin;
 	float	cos;
+	float	sin;
 	int		result;
 
-	sin = sinf(angle);
 	cos = cosf(angle);
-	result = round(z * cos - (x * sin));
+	sin = sinf(angle);
+	result = round(x * sin + y * cos);
 	return (result);
 }
 
-void	ft_rotation_y(t_dot *dot, float angle)
+void	ft_rotation_z(t_dot *dot, float angle)
 {
 	int		xtemp;
+	int		ytemp;
 
 	angle *= PI / 180;
-	xtemp = dot->x;
-	dot->x = ft_calc_ry_x(dot->x, dot->z, angle);
-	dot->z = ft_calc_ry_z(xtemp, dot->z, angle);
+	xtemp = dot->x - dot->i;
+	ytemp = dot->y - dot->j;
+	dot->x1 = ft_calc_rz_x(xtemp, ytemp, angle) + dot->i;
+	dot->y1 = ft_calc_rz_y(xtemp, ytemp, angle) + dot->j;
 	return ;
 }

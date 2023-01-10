@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:20:49 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/24 10:43:14 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:28:11 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
 int	ft_putnbr_hex(unsigned int nbr, char c, int fd, int len)
 {

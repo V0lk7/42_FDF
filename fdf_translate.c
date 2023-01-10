@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   fdf_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 14:12:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/24 09:52:58 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/10 08:49:43 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/10 10:33:19 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "fdf.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+void	ft_translate_x(t_dot *dot, int shift)
+{
+	dot->x += shift;
+	dot->i += shift;
+}
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
-
-char	*ft_strjoin_gnl(char *s1, char *s2);
-int		ft_flag(char *buffer);
-void	ft_move(char **buffer, int len);
-int		ft_read_for(char **buffer, int fd);
-char	*get_next_line(int fd);
-#endif
+void	ft_translate_y(t_dot *dot, int shift)
+{
+	dot->y += shift;
+	dot->j += shift;
+}
