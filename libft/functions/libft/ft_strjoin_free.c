@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:02:42 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 14:13:43 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/11 08:14:56 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	{
 		free (s1);
 		return (NULL);
+	}
+	if (!s1)
+	{
+		ft_strlcpy(new_s, s2, size_alloc + 1);
+		return (new_s);
 	}
 	size_alloc = ft_strlen(s1) + 1;
 	ft_strlcpy(new_s, s1, size_alloc);

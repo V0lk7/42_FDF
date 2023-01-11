@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 15:28:55 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/11 15:14:13 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_dot
 	int	color;
 }	t_dot;
 
-//	Utilities to draw line		//
+//	Struct to draw line		//
 typedef	struct	s_line
 {
 	float	x0;
@@ -54,6 +54,15 @@ typedef	struct	s_line
 	float	xinc;
 	float	yinc;
 }	t_line;
+
+//	Struct parsing set		//
+typedef struct	s_base
+{
+	int	z_base;
+	int	color_base;
+	int	column;
+	int	line;
+}	t_base;
 
 //------fdf_draw.c-------------------------------------//
 void	ft_pixel_put(t_data *data, int x, int y, int color);
@@ -75,6 +84,14 @@ int		ft_calc_rz_y(int x, int y, float angle);
 void	ft_translate_x(t_dot *dot, int shift);
 void	ft_translate_y(t_dot *dot, int shift);
 //------fdf_parsing.c--------------------------------//
+int		ft_find_comma(char *str);
 t_bool	ft_valid_file(char *argv);
 char	*ft_get_map(char *argv);
+t_dot	**ft_organise(int argc, char **argv);
+//------fdf_parsing2.c--------------------------------//
+int		ft_count_arg(char *str);
+int		ft_count_len(char **line);
+t_base	**ft_classify(char *str);
+//------fdf_utils.c--------------------------------//
+void	ft_free_str(char *str, char **list);
 #endif

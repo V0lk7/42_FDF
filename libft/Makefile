@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2023/01/10 15:26:39 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/11 16:20:35 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS 		:=	libft/ft_bzero.c	   	libft/ft_isdigit.c \
 				libft/ft_lstsize.c	   	libft/ft_lstlast.c \
 				libft/ft_lstadd_back.c 	libft/ft_lstdelone.c \
 				libft/ft_lstclear.c	   	libft/ft_lstiter.c \
-				libft/ft_lstmap.c \
+				libft/ft_lstmap.c 		libft/ft_listlen.c \
+				libft/ft_atoi_base.c \
 				\
 				gnl/get_next_line.c    gnl/get_next_line_utils.c \
 				\

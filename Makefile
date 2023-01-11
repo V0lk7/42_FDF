@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/10 13:18:04 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/11 11:34:46 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS 		=	main.c \
 				fdf_draw.c		fdf_rotate_x.c	\
 				fdf_rotate_y.c	fdf_rotate_z.c	\
 				fdf_translate.c fdf_parsing.c	\
+				fdf_parsing2.c	fdf_utils.c \
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 

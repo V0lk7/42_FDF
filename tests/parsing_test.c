@@ -6,12 +6,20 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:07:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 15:50:53 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/11 15:13:33 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "greatest.h"
 #include "../fdf.h"
+
+static	int	ft_cmp(char *s1)
+{
+	if (s1 == NULL)
+		return 0;
+	else 
+		return (1);
+}
 
 TEST	valid_file(void)
 {
@@ -41,11 +49,96 @@ TEST	valid_file(void)
 
 TEST	get_map(void)
 {
-	char	*str;
+	char	*str = NULL;
+	int		i;
 
-	str = ft_get_map("1.fdf");
-	ASSERT_EQ_FMT(0, strcmp(str, "0 0 0  "), "%d");
+	str = ft_get_map("tests/maps/1.fdf");
+	i = strcmp(str, "0 0 0  \n");
+	ASSERT_EQ(0, i);
 	free(str);
+	str = ft_get_map("tests/maps/2.fdf");
+	i = strcmp(str, "00000\n");
+	ASSERT_EQ(0, i);
+	free(str);
+	str = ft_get_map("tests/maps/3.fdf");
+	i = strcmp(str, "\n");
+	ASSERT_EQ(0, i);
+	free(str);
+	str = ft_get_map("tests/maps/4.fdf");
+	i = strcmp(str, "\n000\n00\n000000\n0\n");
+	ASSERT_EQ(0, i);
+	free(str);
+	str = ft_get_map("tests/maps/empty.fdf");
+	i = ft_cmp(str);
+	ASSERT_EQ_FMT(0, i, "%d");
+	PASS();
+}
+
+char	*list[] = {"je suis ton pere",
+"et ouais",
+" allo ?? FUCK OF !",
+" ",
+NULL,
+};
+
+char	*list2[] = {" je",
+ "",
+NULL,
+};
+
+char	*list3[] = {"0 0 0 0",
+"0 0 0 0",
+"0 0 0 0",
+"0 0 0 0",
+"0 0 0 0",
+NULL,
+};
+
+char	*list4[] = {"0 0 0 0",
+"0 0 0 0",
+"0 0 0 0",
+"0 0 0",
+"0 0 0 0",
+NULL,
+};
+
+TEST	listlen(void)
+{
+	ASSERT_EQ(4, ft_listlen(list));
+	ASSERT_EQ(0, ft_listlen(NULL));
+	PASS();
+}
+
+TEST	count_arg(void)
+{
+	ASSERT_EQ_FMT(4, ft_count_arg(list[0]), "%d");
+	ASSERT_EQ_FMT(2, ft_count_arg(list[1]), "%d");
+	ASSERT_EQ_FMT(0, ft_count_arg(list[2]), "%d");
+	ASSERT_EQ_FMT(0, ft_count_arg(list2[0]), "%d");
+	ASSERT_EQ_FMT(0, ft_count_arg(list2[1]), "%d");
+	ASSERT_EQ_FMT(0, ft_count_arg(list2[2]), "%d");
+	PASS();
+}
+
+TEST	count_len(void)
+{
+	ASSERT_EQ_FMT(-1, ft_count_len(list), "%d");
+	ASSERT_EQ_FMT(-1, ft_count_len(list2), "%d");
+	ASSERT_EQ_FMT(20, ft_count_len(list3), "%d");
+	ASSERT_EQ_FMT(-1, ft_count_len(list4), "%d");
+	ASSERT_EQ_FMT(-1, ft_count_len(NULL), "%d");
+	PASS();
+}
+
+TEST	find_comma(void)
+{
+	ASSERT_EQ_FMT(-1, ft_find_comma(""), "%d");
+	ASSERT_EQ_FMT(-1, ft_find_comma(NULL), "%d");
+	ASSERT_EQ_FMT(-1, ft_find_comma("jesuis"), "%d");
+	ASSERT_EQ_FMT(2, ft_find_comma("je,suis"), "%d");
+	ASSERT_EQ_FMT(0, ft_find_comma(","), "%d");
+	ASSERT_EQ_FMT(0, ft_find_comma(",jesuis"), "%d");
+	ASSERT_EQ_FMT(6, ft_find_comma("jesuis,"), "%d");
 	PASS();
 }
 
@@ -53,4 +146,8 @@ SUITE (parsing_suite)
 {
 	RUN_TEST(valid_file);
 	RUN_TEST(get_map);
+	RUN_TEST(listlen);
+	RUN_TEST(count_arg);
+	RUN_TEST(count_len);
+	RUN_TEST(find_comma);
 }

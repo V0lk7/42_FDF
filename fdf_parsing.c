@@ -6,11 +6,43 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:17:09 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 15:57:28 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:22:44 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	ft_add_color(char *str)
+{
+	int		result;
+	char	color[8];
+
+	result = ft_strlen(str);
+	if (result != 8 && ft_strcmp(str, "0x", 2) != 0)
+		return (0x00FFFFFF);
+	ft_strlcpy(color, "00", 2);
+	ft_strlcat(color, str, 8);
+	result = ft_atoi_base(color);
+	if (result <= 0)
+		return (0x00FFFFFF);
+	return (result);
+}
+
+int	ft_find_comma(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return (-1);
+	while(str[i])
+	{
+		if (str[i] == ',')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 
 t_bool	ft_valid_file(char *argv)
 {
@@ -37,6 +69,7 @@ char	*ft_get_map(char *argv)
 	char	*str;
 	char	*line;
 
+	str = NULL;
 	if (ft_valid_file(argv) == FALSE)
 		exit(0);
 	fd = open(argv, O_RDONLY);
@@ -59,11 +92,14 @@ char	*ft_get_map(char *argv)
 t_dot	**ft_organise(int argc, char **argv)
 {
 	char	*str;
+	t_base	**base;
 	t_dot	**map;
 
 	if (argc != 2)
 		exit (0);
 	str = ft_get_map(argv[1]);
-	map = ft_classify(str);
+	if (str == NULL)
+		exit (0);
+	base = ft_classify(str);
 	
 }*/
