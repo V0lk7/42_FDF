@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:07:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/11 15:13:33 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:24:20 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ TEST	get_map(void)
 	PASS();
 }
 
+///////////////////////////////////////////////////////////
 char	*list[] = {"je suis ton pere",
 "et ouais",
 " allo ?? FUCK OF !",
@@ -101,6 +102,7 @@ char	*list4[] = {"0 0 0 0",
 "0 0 0 0",
 NULL,
 };
+////////////////////////////////////////////////////////////
 
 TEST	listlen(void)
 {
@@ -134,12 +136,76 @@ TEST	find_comma(void)
 {
 	ASSERT_EQ_FMT(-1, ft_find_comma(""), "%d");
 	ASSERT_EQ_FMT(-1, ft_find_comma(NULL), "%d");
-	ASSERT_EQ_FMT(-1, ft_find_comma("jesuis"), "%d");
+	ASSERT_EQ_FMT(2, ft_find_comma("10,0x00FFFFFF"), "%d");
 	ASSERT_EQ_FMT(2, ft_find_comma("je,suis"), "%d");
 	ASSERT_EQ_FMT(0, ft_find_comma(","), "%d");
 	ASSERT_EQ_FMT(0, ft_find_comma(",jesuis"), "%d");
 	ASSERT_EQ_FMT(6, ft_find_comma("jesuis,"), "%d");
 	PASS();
+}
+
+TEST	add_color(void)
+{
+	int	i = 0x00FFFFFF;
+
+	ASSERT_EQ_FMT(i, ft_add_color("xFFFFFF"), "%d");
+	ASSERT_EQ_FMT(16777215, ft_add_color("0xFFFFFF"), "%d");
+	ASSERT_EQ_FMT(i, ft_add_color(""), "%d");
+	ASSERT_EQ_FMT(i, ft_add_color(NULL), "%d");
+	ASSERT_EQ_FMT(65280, ft_add_color("0x00FF00"), "%d");
+	PASS();
+}
+
+///////////////////////////////////////////////////////////
+
+t_base	*base;
+char	*str1 = "10,0x00FFFFFF";
+char	*str2 = ",0x00FFFFFF";
+char	*str3 = "100x00FFFFFF";
+
+///////////////////////////////////////////////////////////
+
+TEST	put_data(void)
+{
+	base = malloc(sizeof(t_base));
+	ft_put_data(base, str1, 1, 1);
+	ASSERT_EQ_FMT(10, base->z_base, "%d");
+	ASSERT_EQ_FMT(16777215, base->color_base, "%d");
+	ASSERT_EQ_FMT(1, base->line, "%d");
+	ASSERT_EQ_FMT(1, base->column, "%d");
+	free(base);
+	base = malloc(sizeof(t_base));
+	ft_put_data(base, str2, 0, 10);
+	ASSERT_EQ_FMT(0, base->z_base, "%d");
+	ASSERT_EQ_FMT(16777215, base->color_base, "%d");
+	ASSERT_EQ_FMT(0, base->line, "%d");
+	ASSERT_EQ_FMT(10, base->column, "%d");
+	free(base);
+	base = malloc(sizeof(t_base));
+	ft_put_data(base, str3, 1, 1);
+	ASSERT_EQ_FMT(100, base->z_base, "%d");
+	ASSERT_EQ_FMT(0x00FFFFFF, base->color_base, "%d");
+	ASSERT_EQ_FMT(1, base->line, "%d");
+	ASSERT_EQ_FMT(1, base->column, "%d");
+	free(base);
+	PASS();
+}
+
+///////////////////////////////////////////////////////////
+
+char	**map0 = {0 0 0 0,
+0 0,0x00FF00 0 0,
+10, 2, 50
+};
+
+char	**map1 = {"10 15 -20,0xFF00FF"
+};
+
+///////////////////////////////////////////////////////////
+
+TEST	set_base(void)
+{
+	int	tab[] = {0, 0x00FFFFFF, 0, 0}
 }
 
 SUITE (parsing_suite)
@@ -150,4 +216,6 @@ SUITE (parsing_suite)
 	RUN_TEST(count_arg);
 	RUN_TEST(count_len);
 	RUN_TEST(find_comma);
+	RUN_TEST(add_color);
+	RUN_TEST(put_data);
 }

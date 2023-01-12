@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:17:09 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/11 16:22:44 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:31:10 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_add_color(char *str)
 	char	color[8];
 
 	result = ft_strlen(str);
-	if (result != 8 && ft_strcmp(str, "0x", 2) != 0)
+	if ((str == NULL) || (result != 8 && ft_strncmp(str, "0x", 2) != 0))
 		return (0x00FFFFFF);
 	ft_strlcpy(color, "00", 2);
-	ft_strlcat(color, str, 8);
-	result = ft_atoi_base(color);
-	if (result <= 0)
+	ft_strlcat(color, &str[2], 8);
+	result = ft_atoi_base(color, 16);
+	if (result < 0)
 		return (0x00FFFFFF);
 	return (result);
 }

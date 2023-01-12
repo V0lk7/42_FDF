@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_parsing2.c                                     :+:      :+:    :+:   */
+/*   fdf_parsing_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:04:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/11 16:33:40 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:24:33 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,32 @@ int	ft_count_len(char **line)
 	return (j);
 }
 
-void	ft_put_data(t_base *base, char *line, int len, int i)
+void	ft_put_data(t_base *base, char *str, int line, int col)
 {
-	int		i;
 	int		index;
+	char	*z;
 
-	i = 0;
-	index = ft_find_comma(line);
-	if (index > 0)
+	index = ft_find_comma(str);
+	if (index >= 0)
 	{
-		base->color = ft_add_color(&line[index]);
+		base->color_base = ft_add_color(&str[index]);
+		if (index == 0)
+			base->z_base = 0;
+		else
+		{
+			z = ft_calloc(1, index + 1);
+			ft_strlcpy(z, str, index + 1);
+			base->z_base = ft_atoi(z);
+			free(z);
+		}
 	}
-	
+	else
+	{
+		base->color_base = 0x00FFFFFF;
+		base->z_base = ft_atoi(str);
+	}
+	base->column = col;
+	base->line = line;
 }
 
 t_base	**ft_set_base(char	**list, int len)
@@ -87,7 +101,7 @@ t_base	**ft_set_base(char	**list, int len)
 			ft_free_str(NULL, list);
 			exit(0);
 		}
-		while (line(len))
+		while (line[len])
 		{
 			ft_put_data(base[j], line[len], len, i);
 			j++;
@@ -98,7 +112,7 @@ t_base	**ft_set_base(char	**list, int len)
 	}
 	return (base);
 }
-
+/*
 t_base	**ft_classify(char *str)
 {
 	char	**line;
@@ -116,4 +130,4 @@ t_base	**ft_classify(char *str)
 		exit(0);
 	}
 	base = ft_set_base(line, len);
-}
+}*/

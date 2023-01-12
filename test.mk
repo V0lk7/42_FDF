@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 08:11:27 by jduval            #+#    #+#              #
-#    Updated: 2023/01/06 08:40:06 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/12 14:43:25 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ $(TEST_OBJS): CFLAGS = -Wall -Wextra -ggdb3
 $(RUNNER): $(LIBS_TARGET) $(ARCHIVE) $(TESTS_OBJS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TESTS_OBJS) $(ARCHIVE) $(LDLIBS) -o $(RUNNER)
 
-test: fclean $(RUNNER)
+clear:
+	rm -rf $(ARCHIVE)
+.PHONY: clear
+
+test: clear fclean $(RUNNER)
 	valgrind -q --leak-check=full --show-reachable=yes $(RUNNER)
 .PHONY: test

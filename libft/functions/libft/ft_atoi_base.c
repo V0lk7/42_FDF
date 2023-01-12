@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol_base.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:05:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/11 16:19:38 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/12 12:48:43 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_base(char c, int len)
 	return (-1);
 }
 
-int	ft_atol_base(char *str, int str_base)
+int	ft_atoi_base(char *str, int str_base)
 {
 	int	i;
 	int	value;
