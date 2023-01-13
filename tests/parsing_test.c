@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:07:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 15:24:20 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/13 15:11:06 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,23 @@ char	*list4[] = {"0 0 0 0",
 "0 0 0 0",
 NULL,
 };
+
+char	*list5[] = {"0 0 0",
+"0 0 0",
+"0 0 0",
+"0 0 0",
+NULL,
+};
+
+char	*list6[] = {"0 0",
+NULL,
+};
+
+char	*list7[] = {"0",
+"0",
+NULL,
+};
+
 ////////////////////////////////////////////////////////////
 
 TEST	listlen(void)
@@ -151,6 +168,7 @@ TEST	add_color(void)
 	ASSERT_EQ_FMT(i, ft_add_color("xFFFFFF"), "%d");
 	ASSERT_EQ_FMT(16777215, ft_add_color("0xFFFFFF"), "%d");
 	ASSERT_EQ_FMT(i, ft_add_color(""), "%d");
+	ASSERT_EQ_FMT(255, ft_add_color("0x0000FF"), "%d");
 	ASSERT_EQ_FMT(i, ft_add_color(NULL), "%d");
 	ASSERT_EQ_FMT(65280, ft_add_color("0x00FF00"), "%d");
 	PASS();
@@ -164,7 +182,7 @@ char	*str2 = ",0x00FFFFFF";
 char	*str3 = "100x00FFFFFF";
 
 ///////////////////////////////////////////////////////////
-
+/*	PLus d'actualité
 TEST	put_data(void)
 {
 	base = malloc(sizeof(t_base));
@@ -189,23 +207,44 @@ TEST	put_data(void)
 	ASSERT_EQ_FMT(1, base->column, "%d");
 	free(base);
 	PASS();
+}*/
+
+TEST	get_x(void)
+{
+	t_base	*base;
+
+	base = ft_set_base(list3, 20, 0, 0);
+	ASSERT_EQ_FMT(3, ft_get_x(base), "%d");
+	free(base);
+	base = ft_set_base(list5, 12, 0, 0);
+	ASSERT_EQ_FMT(2, ft_get_x(base), "%d");
+	free(base);
+	base = ft_set_base(list6, 2, 0, 0);
+	ASSERT_EQ_FMT(1, ft_get_x(base), "%d");
+	free(base);
+	base = ft_set_base(list7, 2, 0, 0);
+	ASSERT_EQ_FMT(0, ft_get_x(base), "%d");
+	free(base);
+	PASS();
 }
 
-///////////////////////////////////////////////////////////
-
-char	**map0 = {0 0 0 0,
-0 0,0x00FF00 0 0,
-10, 2, 50
-};
-
-char	**map1 = {"10 15 -20,0xFF00FF"
-};
-
-///////////////////////////////////////////////////////////
-
-TEST	set_base(void)
+TEST	get_y(void)
 {
-	int	tab[] = {0, 0x00FFFFFF, 0, 0}
+	t_base	*base;
+
+	base = ft_set_base(list3, 20, 0, 0);
+	ASSERT_EQ_FMT(4, ft_get_y(base), "%d");
+	free(base);
+	base = ft_set_base(list5, 12, 0, 0);
+	ASSERT_EQ_FMT(3, ft_get_y(base), "%d");
+	free(base);
+	base = ft_set_base(list6, 2, 0, 0);
+	ASSERT_EQ_FMT(0, ft_get_y(base), "%d");
+	free(base);
+	base = ft_set_base(list7, 2, 0, 0);
+	ASSERT_EQ_FMT(1, ft_get_y(base), "%d");
+	free(base);
+	PASS();
 }
 
 SUITE (parsing_suite)
@@ -217,5 +256,7 @@ SUITE (parsing_suite)
 	RUN_TEST(count_len);
 	RUN_TEST(find_comma);
 	RUN_TEST(add_color);
-	RUN_TEST(put_data);
+	//RUN_TEST(put_data);
+	RUN_TEST(get_x);
+	RUN_TEST(get_y);
 }

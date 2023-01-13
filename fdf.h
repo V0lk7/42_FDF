@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 14:33:43 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/13 14:06:18 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct	s_base
 	int	color_base;
 	int	column;
 	int	line;
+	int	lengh;
 }	t_base;
 
 //------fdf_draw.c-------------------------------------//
@@ -88,12 +89,17 @@ int		ft_add_color(char *str);
 int		ft_find_comma(char *str);
 t_bool	ft_valid_file(char *argv);
 char	*ft_get_map(char *argv);
-t_dot	**ft_organise(int argc, char **argv);
+t_dot	*ft_organise(int argc, char **argv);
 //------fdf_parsing_utils.c--------------------------------//
 int		ft_count_arg(char *str);
 int		ft_count_len(char **line);
-void	ft_put_data(t_base *base, char *str, int line, int col);
-t_base	**ft_classify(char *str);
+void	ft_put_data(t_base *base, char **str, int line, int col);
+t_base	*ft_set_base(char **list, int len, int i, int j);
+t_base	*ft_classify(char *str);
+//------fdf_shifting.c--------------------------------//
+int		ft_get_x(t_base *base);
+int		ft_get_y(t_base *base);
+t_dot	*ft_apply_points(t_base *base);
 //------fdf_utils.c--------------------------------//
 void	ft_free_str(char *str, char **list);
 #endif

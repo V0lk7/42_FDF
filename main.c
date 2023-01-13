@@ -6,18 +6,26 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:27:19 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 14:47:59 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/13 14:07:40 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <string.h>
 
 int	main(void)
 {
+	char	*tab[] = {"0 10 5 2 1",
+					NULL};
+	t_base	*test;
+	int		i = 0;
 
-	printf("%i\n", ft_atoi("10,0x"));
-	printf("%i\n", ft_atoi("10"));
+	test = ft_set_base(tab, 5, 0, 0);
+	while(i < 5)
+	{
+		printf("lengh = %i\n", test[i].lengh);
+		i++;
+	}
+	free (test);
 	return (0);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:04:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 15:24:33 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/13 14:53:31 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,81 +53,65 @@ int	ft_count_len(char **line)
 	return (j);
 }
 
-void	ft_put_data(t_base *base, char *str, int line, int col)
+void	ft_put_data(t_base *base, char **str, int line, int col)
 {
 	int		index;
-	char	*z;
 
-	index = ft_find_comma(str);
+	index = ft_find_comma(str[col]);
 	if (index >= 0)
-	{
-		base->color_base = ft_add_color(&str[index]);
-		if (index == 0)
-			base->z_base = 0;
-		else
-		{
-			z = ft_calloc(1, index + 1);
-			ft_strlcpy(z, str, index + 1);
-			base->z_base = ft_atoi(z);
-			free(z);
-		}
-	}
+		base->color_base = ft_add_color(&str[col][index + 1]);
 	else
-	{
 		base->color_base = 0x00FFFFFF;
-		base->z_base = ft_atoi(str);
-	}
+	base->z_base = ft_atoi(str[col]);
 	base->column = col;
 	base->line = line;
 }
 
-t_base	**ft_set_base(char	**list, int len)
+t_base	*ft_set_base(char **list, int len, int i, int j)
 {
 	char	**line;
-	t_base	**base;
-	int		i;
-	int		j;
+	t_base	*base;
 
-	i = 0;
-	j = 0;
-	base = malloc(sizeof(t_base *) * (len + 1));
-	base[len + 1] = NULL;
-	len = 0;
-	while (list[i])
+	base = malloc(sizeof(t_base) * len);
+	if (base == NULL)
+		return (NULL);
+	while (i < len)
+		base[i++].lengh = len;
+	i = -1;
+	while (list[++i])
 	{
+		len = -1;
 		line = ft_split(list[i], ' ');
-		if (line == NULL && len <= 0)
+		if (line == NULL)
 		{
 			ft_free_str(NULL, list);
 			exit(0);
 		}
-		while (line[len])
-		{
-			ft_put_data(base[j], line[len], len, i);
-			j++;
-			len++;
-		}
+		while (line[++len])
+			ft_put_data(&base[j++], line, i, len);
 		ft_free_str(NULL, line);
-		i++;
 	}
 	return (base);
 }
-/*
-t_base	**ft_classify(char *str)
+
+t_base	*ft_classify(char *str)
 {
 	char	**line;
-	t_base	**base;
+	t_base	*base;
 	int		len;
 
 	line = ft_split(str, '\n');
-	free(str);
-	if (line == NULL)
+	if (*line == NULL || line == NULL)
 		exit (0);
 	len = ft_count_len(line);
-	if (len <= 0)
+	if (len <= 1)
 	{
-		ft_free_str(NULL, line);
+		ft_free_str(str, line);
 		exit(0);
 	}
-	base = ft_set_base(line, len);
-}*/
+	base = ft_set_base(line, len, 0, 0);	
+	ft_free_str(str, line);
+	if (base == NULL)
+		exit (0);
+	return (base);
+}

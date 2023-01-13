@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:17:09 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 14:31:10 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/13 13:20:21 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 int	ft_add_color(char *str)
 {
 	int		result;
-	char	color[8];
+	char	*color;
 
 	result = ft_strlen(str);
-	if ((str == NULL) || (result != 8 && ft_strncmp(str, "0x", 2) != 0))
+	if ((str == NULL) || (ft_strncmp(str, "0x", 2) != 0 && result <= 10))
 		return (0x00FFFFFF);
-	ft_strlcpy(color, "00", 2);
-	ft_strlcat(color, &str[2], 8);
+	color = ft_calloc(1, result - 1);
+	ft_strlcpy(color, &str[2], result - 1);
 	result = ft_atoi_base(color, 16);
+	free(color);
 	if (result < 0)
 		return (0x00FFFFFF);
 	return (result);
@@ -89,17 +90,24 @@ char	*ft_get_map(char *argv)
 	return (str);
 }
 /*
-t_dot	**ft_organise(int argc, char **argv)
+t_dot	*ft_organise(int argc, char **argv)
 {
 	char	*str;
-	t_base	**base;
-	t_dot	**map;
+	t_base	*base;
+	t_dot	*map;
+	int		*size;
 
 	if (argc != 2)
 		exit (0);
 	str = ft_get_map(argv[1]);
 	if (str == NULL)
 		exit (0);
-	base = ft_classify(str);
-	
+	base = ft_classify(str, size);
+	if (base == NULL)
+		exit (0);
+	map = ft_apply_points(base, size);
+	free(base);
+	if (map == NULL)
+		exit (0);
+	return (map);
 }*/
