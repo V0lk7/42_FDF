@@ -1,50 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_utils.c                                        :+:      :+:    :+:   */
+/*   fdf_user_interactions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 09:28:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/17 15:05:18 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/18 10:31:39 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/18 16:43:50 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	ft_free_str(char *str, char **list)
+int	touch(int keycode, t_vars *vars)
 {
-	int	i;
-
-	i = 0;
-	if (str != NULL)
-		free(str);
-	if (list != NULL)
-	{
-		while (list[i])
-		{
-			free(list[i]);
-			i++;
-		}
-		free(list);
-	}
-	return ;
-}
-
-void	ft_free_struct(t_dot **map)
-{
-	int	i;
-	int	j;
-
-	j = map[0]->lines;
-	i = 0;
-	if (*map == NULL || map == NULL)
-		return ;
-	while (i < j)
-	{
-		free (map[i]);
-		i++;
-	}
-	free (map);
-	return ;
+	if (keycode != XK_Escape)
+		return (0);
+	mlx_destroy_image(vars->mlx, vars->img);
+	mlx_destroy_display()
 }

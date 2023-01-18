@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:07:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/13 15:11:06 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/16 10:06:20 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,41 +174,6 @@ TEST	add_color(void)
 	PASS();
 }
 
-///////////////////////////////////////////////////////////
-
-t_base	*base;
-char	*str1 = "10,0x00FFFFFF";
-char	*str2 = ",0x00FFFFFF";
-char	*str3 = "100x00FFFFFF";
-
-///////////////////////////////////////////////////////////
-/*	PLus d'actualité
-TEST	put_data(void)
-{
-	base = malloc(sizeof(t_base));
-	ft_put_data(base, str1, 1, 1);
-	ASSERT_EQ_FMT(10, base->z_base, "%d");
-	ASSERT_EQ_FMT(16777215, base->color_base, "%d");
-	ASSERT_EQ_FMT(1, base->line, "%d");
-	ASSERT_EQ_FMT(1, base->column, "%d");
-	free(base);
-	base = malloc(sizeof(t_base));
-	ft_put_data(base, str2, 0, 10);
-	ASSERT_EQ_FMT(0, base->z_base, "%d");
-	ASSERT_EQ_FMT(16777215, base->color_base, "%d");
-	ASSERT_EQ_FMT(0, base->line, "%d");
-	ASSERT_EQ_FMT(10, base->column, "%d");
-	free(base);
-	base = malloc(sizeof(t_base));
-	ft_put_data(base, str3, 1, 1);
-	ASSERT_EQ_FMT(100, base->z_base, "%d");
-	ASSERT_EQ_FMT(0x00FFFFFF, base->color_base, "%d");
-	ASSERT_EQ_FMT(1, base->line, "%d");
-	ASSERT_EQ_FMT(1, base->column, "%d");
-	free(base);
-	PASS();
-}*/
-
 TEST	get_x(void)
 {
 	t_base	*base;
@@ -256,7 +221,6 @@ SUITE (parsing_suite)
 	RUN_TEST(count_len);
 	RUN_TEST(find_comma);
 	RUN_TEST(add_color);
-	//RUN_TEST(put_data);
 	RUN_TEST(get_x);
 	RUN_TEST(get_y);
 }

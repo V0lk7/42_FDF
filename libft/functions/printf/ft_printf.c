@@ -63,16 +63,6 @@ static int	ft_put_carac(char format, va_list arg_point, int fd)
 	return (len);
 }
 
-/*static int	ft_strlen(const char *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
-}*/
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg_point;

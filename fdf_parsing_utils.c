@@ -6,19 +6,21 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:04:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/13 14:53:31 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/18 09:33:25 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_count_arg(char *str)
+ssize_t	ft_count_arg(char *str)
 {
-	int	i;
-	int	j;
+	ssize_t	i;
+	ssize_t	j;
 
 	i = 0;
 	j = 0;
+	if (str[i] == ' ')
+		i++;
 	if (str == NULL || str[i] == '\0' || str[i] == ' ')
 		return (0);
 	while (str[i])
@@ -30,15 +32,15 @@ int	ft_count_arg(char *str)
 	return (j + 1);
 }
 
-int	ft_count_len(char **line)
+ssize_t	ft_count_len(char **line)
 {
-	int	i;
-	int	j;
-	int	tmp;
+	ssize_t	i;
+	ssize_t	j;
+	ssize_t	tmp;
 
 	i = 0;
 	j = 0;
-	if (line == NULL || *line == NULL)
+	if (line == NULL)
 		return (-1);
 	tmp = ft_count_arg(line[i]);
 	while (line[i] != NULL)
@@ -98,11 +100,14 @@ t_base	*ft_classify(char *str)
 {
 	char	**line;
 	t_base	*base;
-	int		len;
+	ssize_t	len;
 
 	line = ft_split(str, '\n');
-	if (*line == NULL || line == NULL)
+	if (line == NULL)
+	{
+		ft_free_str(str, line);
 		exit (0);
+	}
 	len = ft_count_len(line);
 	if (len <= 1)
 	{

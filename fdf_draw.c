@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:10:32 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/10 10:31:06 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/18 16:13:41 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,15 @@ void	ft_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if ((x >= 0 && x <= 1920)
-			&& (y >= 0 && y <= 1080))
+	if ((x >= 0 && x < 1920)
+			&& (y >= 0 && y < 1080))
 	{
-		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+		dst = data->addr + (y * data->l_lengh + x * (data->bpp / 8));
 		*(unsigned int*)dst = color;
 	}
 }
 
-t_dot	ft_insert_points(int xa, int ya, int za)
-{
-	t_dot	dot;
-
-	dot.x = xa;
-	dot.y = ya;
-	dot.z = za;
-	dot.x1 = xa;
-	dot.y1 = ya;
-	dot.z1 = za;
-	dot.i = 960;
-	dot.j = 540;
-	dot.k = 0;
-	dot.color = 0xFFFFFFFF;
-	return (dot);
-}
-
-void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2)
+void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2, int color)
 {
 	float	steps;
 	t_line	params;	
@@ -59,7 +42,7 @@ void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2)
 	params.yinc = params.dy / steps;
 	while (steps >= 0)
 	{
-		ft_pixel_put(img, params.x0, params.y0, dot1->color);
+		ft_pixel_put(img, params.x0, params.y0, color);
 		params.x0 += params.xinc;
 		params.y0 += params.yinc;
 		steps--;

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:17:09 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/13 13:20:21 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/18 09:35:27 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_add_color(char *str)
 	ft_strlcpy(color, &str[2], result - 1);
 	result = ft_atoi_base(color, 16);
 	free(color);
-	if (result < 0)
+	if (result <= 0)
 		return (0x00FFFFFF);
 	return (result);
 }
@@ -89,25 +89,27 @@ char	*ft_get_map(char *argv)
 	close(fd);
 	return (str);
 }
-/*
-t_dot	*ft_organise(int argc, char **argv)
+
+t_dot	**ft_organise(int argc, char **argv, int lengh, int width)
 {
 	char	*str;
 	t_base	*base;
-	t_dot	*map;
-	int		*size;
+	t_dot	**map;
 
 	if (argc != 2)
 		exit (0);
 	str = ft_get_map(argv[1]);
 	if (str == NULL)
 		exit (0);
-	base = ft_classify(str, size);
+	base = ft_classify(str);
 	if (base == NULL)
 		exit (0);
-	map = ft_apply_points(base, size);
-	free(base);
+	map = ft_apply_map(base, lengh, width);
 	if (map == NULL)
+	{
+		ft_free_struct(map);
 		exit (0);
+	}
+	free(base);
 	return (map);
-}*/
+}

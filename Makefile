@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/13 12:46:17 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/18 15:22:29 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ MAKEFLAGS	+=	--no-print-directory
 
 LIBS 		=	ft mlx Xext X11 m z
 
-LIBS_TARGET =	libft/libft.a 					\
-				minilibx-linux/libmlx_Linux.a 	\
+LIBS_TARGET =	libft/libft.a		\
+				mlx/libmlx_Linux.a	\
 
-INCLUDES	=	libft/include	\
-				minilibx-linux	\
+INCLUDES	=	libft/include 	\
+				mlx				\
 				/usr/lib		\
 
 ###############################################################################
@@ -34,7 +34,7 @@ SRCS 		=	main.c \
 				fdf_rotate_y.c			fdf_rotate_z.c	\
 				fdf_translate.c 		fdf_parsing.c	\
 				fdf_parsing_utils.c		fdf_utils.c \
-				fdf_shifting.c \
+				fdf_shifting.c 			fdf_link_points.c \
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
