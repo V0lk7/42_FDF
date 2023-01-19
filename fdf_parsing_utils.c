@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:04:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 09:33:25 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:31:49 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ ssize_t	ft_count_len(char **line)
 	{
 		if (tmp != ft_count_arg(line[i]))
 			return (-1);
-		j += ft_count_arg(line[i]);	
+		j += ft_count_arg(line[i]);
 		i++;
 	}
 	if (j <= 0)
@@ -114,7 +114,7 @@ t_base	*ft_classify(char *str)
 		ft_free_str(str, line);
 		exit(0);
 	}
-	base = ft_set_base(line, len, 0, 0);	
+	base = ft_set_base(line, len, 0, 0);
 	ft_free_str(str, line);
 	if (base == NULL)
 		exit (0);

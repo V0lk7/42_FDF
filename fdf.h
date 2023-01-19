@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 15:44:53 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:30:16 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 #include "mlx.h"
+#include "mlx/mlx_int.h"
 #include <math.h>
 #include "libft.h"
 #include <stdio.h>
@@ -91,6 +92,7 @@ typedef	struct	s_tool
 	float	incr_y;
 	float	incr_xo;
 	float	incr_yo;
+	float	k;
 
 }	t_tool;
 
@@ -136,6 +138,13 @@ t_dot	**ft_apply_map(t_base *base, int lengh, int width);
 //------fdf_utils.c--------------------------------//
 void	ft_free_str(char *str, char **list);
 void	ft_free_struct(t_dot **map);
+float	ft_calculate_k(t_base *base, t_tool *tool);
 //------fdf_link_points.c--------------------------------//
 void	ft_link_points(t_vars *vars, t_dot **map);
+//------fdf_create_iso.c--------------------------------//
+void	ft_create_iso(t_vars *vars);
+//------fdf_user_exit.c--------------------------------//
+void	ft_close_program(t_vars *vars);
+int		ft_keyboard(int keycode, t_vars *vars);
+int		ft_mouse(t_vars *vars);
 #endif

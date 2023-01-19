@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:10:32 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 16:13:41 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:27:48 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	ft_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	if ((x >= 0 && x < 1920)
-			&& (y >= 0 && y < 1080))
+		&& (y >= 0 && y < 1080))
 	{
 		dst = data->addr + (y * data->l_lengh + x * (data->bpp / 8));
-		*(unsigned int*)dst = color;
+		*(unsigned int *)dst = color;
 	}
 }
 

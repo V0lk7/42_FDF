@@ -6,36 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:27:19 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 16:43:52 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:24:16 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
-static void	ft_display(t_dot **map)
-{
-	int	i = 0;
-	int	k = 0;
-	int	z = map[0][0].lines;
-	int	m = map[0][0].cols;
-
-	while (k < z)
-	{
-		printf("ligne numéro %i\n", k);
-		while (i < m)
-		{
-			printf("Structure numéro %i\n", i);
-			printf("x = %i, y = %i, z = %i\n", map[k][i].x, map[k][i].y, map[k][i].z);
-			printf("x1 = %i, y1 = %i, z1 = %i\n", map[k][i].x1, map[k][i].y1, map[k][i].z1);
-			printf("i = %i, j = %i, k = %i\n", map[k][i].i, map[k][i].j, map[k][i].k);
-			printf("color = %i\n", map[k][i].color);
-			i++;
-		}
-		i = 0;
-		k++;
-	}
-}
-*/
 
 void	ft_init_data(t_vars *vars, t_data *data, int x, int y)
 {
@@ -86,9 +61,11 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 
 	ft_init_vars(&vars, argc, argv);
+	ft_create_iso(&vars);
 	ft_link_points(&vars, vars.map);
-	ft_free_struct(vars.map);
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.data.img, 0, 0);
+	mlx_key_hook(vars.mlx_win, ft_keyboard, &vars);
+	mlx_hook(vars.mlx_win, 17, 0L, ft_mouse, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

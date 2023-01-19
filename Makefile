@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/18 15:22:29 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/19 15:00:09 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS 		=	main.c \
 				fdf_translate.c 		fdf_parsing.c	\
 				fdf_parsing_utils.c		fdf_utils.c \
 				fdf_shifting.c 			fdf_link_points.c \
+				fdf_isometric.c			fdf_user_exit.c	\
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 

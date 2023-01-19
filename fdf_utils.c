@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:28:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/17 15:05:18 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:30:54 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,32 @@ void	ft_free_struct(t_dot **map)
 	}
 	free (map);
 	return ;
+}
+
+float	ft_calculate_k(t_base *base, t_tool *tool)
+{
+	int		i;
+	float	k;
+	int		max;
+	int		min;
+
+	i = 0;
+	k = 0;
+	max = base[i].z_base;
+	min = base[i].z_base;
+	while (i < base[0].lengh)
+	{
+		if (max < base[i].z_base)
+			max = base[i].z_base;
+		if (min > base[i].z_base)
+			min = base[i].z_base;
+		i++;
+	}
+	if (tool->incr_y > tool->incr_x)
+		k = tool->incr_y / (abs(max - min));
+	else
+		k = tool->incr_x / (abs(max - min));
+	if (tool->incr_y < 5 || tool->incr_x < 5)
+		k += 0.2;
+	return (k);
 }

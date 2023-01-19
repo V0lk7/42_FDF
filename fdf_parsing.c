@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:17:09 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 09:35:27 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:31:17 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_find_comma(char *str)
 	i = 0;
 	if (str == NULL)
 		return (-1);
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == ',')
 			return (i);

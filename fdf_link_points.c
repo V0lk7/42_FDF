@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 08:59:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/18 16:29:35 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:28:54 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_link_points(t_vars *vars, t_dot **map)
 	int	j;
 	int	color;
 
-	i = 0;	
+	i = 0;
 	j = 0;
 	while (i < map[0][0].lines)
 	{
