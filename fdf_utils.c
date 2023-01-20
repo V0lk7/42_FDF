@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:28:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 18:30:54 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 12:24:03 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ float	ft_calculate_k(t_base *base, t_tool *tool)
 		i++;
 	}
 	if (tool->incr_y > tool->incr_x)
-		k = tool->incr_y / (abs(max - min));
+		k = (tool->incr_y - (abs(max - min))) / (abs(max - min));
 	else
-		k = tool->incr_x / (abs(max - min));
-	if (tool->incr_y < 5 || tool->incr_x < 5)
-		k += 0.2;
+		k = (tool->incr_x - (abs(max - min))) / (abs(max - min));
+	if (k < 0)
+		k *= -1;
 	return (k);
 }

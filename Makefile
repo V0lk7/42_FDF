@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/19 15:00:09 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/20 16:45:55 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,21 @@ INCLUDES	=	libft/include 	\
 
 BUILD_DIR 	= 	.build
 
-SRCS 		=	main.c \
-				fdf_draw.c				fdf_rotate_x.c	\
-				fdf_rotate_y.c			fdf_rotate_z.c	\
-				fdf_translate.c 		fdf_parsing.c	\
-				fdf_parsing_utils.c		fdf_utils.c \
-				fdf_shifting.c 			fdf_link_points.c \
-				fdf_isometric.c			fdf_user_exit.c	\
+SRCS 		=	fdf_draw.c				fdf_rotate_x.c		\
+				fdf_rotate_y.c			fdf_rotate_z.c		\
+				fdf_translate.c 		fdf_parsing.c		\
+				fdf_parsing_utils.c		fdf_utils.c 		\
+				fdf_shifting.c 			fdf_link_points.c 	\
+				fdf_isometric.c			fdf_user_exit.c		\
+
+SRCS_BONUS	=	fdf_clear_bonus.c		fdf_key_bonus.c		\
+				fdf_zoom_bonus.c	\
+
+ifdef BONUS
+SRCS += $(SRCS_BONUS) fdf_bonus.c
+else
+SRCS += fdf.c
+endif
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -46,7 +54,7 @@ DEPS = $(OBJS:.o=.d)
 
 CC 			=	clang
 
-CFLAGS 		=	-Werror -Wextra -Wall -ggdb3
+CFLAGS 		=	-Werror -Wextra -Wall -ggdb3 -O3
 
 CPPFLAGS 	=	-MMD -MP $(addprefix -I,$(INCLUDES))
 
@@ -73,6 +81,10 @@ $(BUILD_DIR)/%.o : %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 -include $(DEPS) test.mk
+
+bonus: 
+	$(MAKE) BONUS=1 all
+.PHONY:bonus
 
 ###############################################################################
 

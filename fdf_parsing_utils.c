@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:04:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 18:31:49 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 12:32:07 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_put_data(t_base *base, char **str, int line, int col)
 	if (index >= 0)
 		base->color_base = ft_add_color(&str[col][index + 1]);
 	else
-		base->color_base = 0x00FFFFFF;
+		base->color_base = 0xFFFFFF;
 	base->z_base = ft_atoi(str[col]);
 	base->column = col;
 	base->line = line;

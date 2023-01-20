@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 17:30:16 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:22:23 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,12 @@ typedef	struct	s_tool
 
 }	t_tool;
 
-//------fdf.c-------------------------------------//
+//-----fdf.c-------------------------------------//
 void	ft_init_vars(t_vars *vars, int argc, char **argv);
 void	ft_init_data(t_vars *vars, t_data *data, int x, int y);
 //------fdf_draw.c-------------------------------------//
-void	ft_pixel_put(t_data *data, int x, int y, int color);
-void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2, int color);
+void	ft_pixel_put(t_vars *vars, int x, int y, int color);
+void	ft_dda(t_vars *vars, t_dot *dot1, t_dot *dot2, int color);
 //------fdf_rotate_x.c---------------------------------//
 void	ft_rotation_x(t_dot *dot, float angle);
 int		ft_calc_rx_y(int y, int z, float angle);
@@ -140,7 +140,7 @@ void	ft_free_str(char *str, char **list);
 void	ft_free_struct(t_dot **map);
 float	ft_calculate_k(t_base *base, t_tool *tool);
 //------fdf_link_points.c--------------------------------//
-void	ft_link_points(t_vars *vars, t_dot **map);
+void	ft_link_points(t_vars *vars);
 //------fdf_create_iso.c--------------------------------//
 void	ft_create_iso(t_vars *vars);
 //------fdf_user_exit.c--------------------------------//

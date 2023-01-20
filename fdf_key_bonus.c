@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_isometric.c                                    :+:      :+:    :+:   */
+/*   fdf_key_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:40:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 16:50:16 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/20 16:19:29 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/20 17:39:16 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
-void	ft_create_iso(t_vars *vars)
+int	ft_key(int keycode, t_vars *vars/*, t_shift *shift*/)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < vars->map[0][0].lines)
+	printf("%i\n", keycode);
+	if (keycode == ESC)
+		ft_close_program(vars);
+	else if (keycode == I || keycode == O)
 	{
-		while (j < vars->map[0][0].cols)
-		{
-			ft_rotation_z(&vars->map[i][j], 45);
-			ft_rotation_x(&vars->map[i][j], 32);
-			j++;
-		}
-		j = 0;
-		i++;
+		printf("je passe\n");
+		ft_zoom(vars, keycode);	
 	}
-	ft_link_points(vars);
-	return ;
+	return (0);
 }
+

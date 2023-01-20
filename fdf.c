@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:27:19 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 18:24:16 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 16:50:56 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_init_data(t_vars *vars, t_data *data, int x, int y)
 		exit(0);
 	}
 	data->addr = mlx_get_data_addr(data->img, &data->bpp,
-				&data->l_lengh, &data->endian);
+			&data->l_lengh, &data->endian);
 	if (data->addr == NULL)
 	{
 		ft_free_struct(vars->map);
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 
 	ft_init_vars(&vars, argc, argv);
 	ft_create_iso(&vars);
-	ft_link_points(&vars, vars.map);
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.data.img, 0, 0);
 	mlx_key_hook(vars.mlx_win, ft_keyboard, &vars);
 	mlx_hook(vars.mlx_win, 17, 0L, ft_mouse, &vars);

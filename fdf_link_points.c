@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 08:59:22 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 18:28:54 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:23:12 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_chose_color(int color1, int color2)
 		return (color1);
 }
 
-void	ft_link_points(t_vars *vars, t_dot **map)
+static	void	ft_link_x(t_vars *vars, t_dot **map)
 {
 	int	i;
 	int	j;
@@ -35,12 +35,20 @@ void	ft_link_points(t_vars *vars, t_dot **map)
 		while (j < map[0][0].cols - 1)
 		{
 			color = ft_chose_color(map[i][j].color, map[i][j + 1].color);
-			ft_dda(&vars->data, &map[i][j], &map[i][j + 1], color);
+			ft_dda(vars, &map[i][j], &map[i][j + 1], color);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+}
+
+static	void	ft_link_y(t_vars *vars, t_dot **map)
+{
+	int	i;
+	int	j;
+	int	color;
+
 	j = 0;
 	while (j + 1 < map[0][0].lines)
 	{
@@ -48,10 +56,16 @@ void	ft_link_points(t_vars *vars, t_dot **map)
 		while (i >= 0)
 		{
 			color = ft_chose_color(map[j][i].color, map[j + 1][i].color);
-			ft_dda(&vars->data, &map[j][i], &map[j + 1][i], color);
+			ft_dda(vars, &map[j][i], &map[j + 1][i], color);
 			i--;
 		}
 		j++;
 	}
+}
+
+void	ft_link_points(t_vars *vars)
+{
+	ft_link_x(vars, vars->map);
+	ft_link_y(vars, vars->map);
 	return ;
 }

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_isometric.c                                    :+:      :+:    :+:   */
+/*   fdf_clear_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:40:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 16:50:16 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/20 15:09:23 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/20 17:27:01 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_create_iso(t_vars *vars)
+void	ft_clear(t_vars *vars)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i < vars->map[0][0].lines)
+	while (i < vars->y)
 	{
-		while (j < vars->map[0][0].cols)
+		j = 0;
+		while (j < vars->x)
 		{
-			ft_rotation_z(&vars->map[i][j], 45);
-			ft_rotation_x(&vars->map[i][j], 32);
+			ft_pixel_put(vars, j, i, 0x000000);
 			j++;
 		}
-		j = 0;
 		i++;
 	}
-	ft_link_points(vars);
 	return ;
 }

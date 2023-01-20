@@ -6,25 +6,26 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 08:10:32 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 18:27:48 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:25:33 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_pixel_put(t_data *data, int x, int y, int color)
+void	ft_pixel_put(t_vars *vars, int x, int y, int color)
 {
 	char	*dst;
+	int		tmp;
 
-	if ((x >= 0 && x < 1920)
-		&& (y >= 0 && y < 1080))
+	if ((x >= 0 && x < vars->x) && (y >= 0 && y < vars->y))
 	{
-		dst = data->addr + (y * data->l_lengh + x * (data->bpp / 8));
+		tmp = y * vars->data.l_lengh + x * (vars->data.bpp / 8);
+		dst = vars->data.addr + tmp;
 		*(unsigned int *)dst = color;
 	}
 }
 
-void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2, int color)
+void	ft_dda(t_vars *vars, t_dot *dot1, t_dot *dot2, int color)
 {
 	float	steps;
 	t_line	params;	
@@ -42,7 +43,7 @@ void	ft_dda(t_data *img, t_dot *dot1, t_dot *dot2, int color)
 	params.yinc = params.dy / steps;
 	while (steps >= 0)
 	{
-		ft_pixel_put(img, params.x0, params.y0, color);
+		ft_pixel_put(vars, params.x0, params.y0, color);
 		params.x0 += params.xinc;
 		params.y0 += params.yinc;
 		steps--;
