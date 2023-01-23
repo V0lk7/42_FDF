@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_translate.c                                    :+:      :+:    :+:   */
+/*   fdf_reset_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 08:49:43 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 14:13:30 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/23 13:44:56 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/23 13:56:09 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-static void	ft_translate_x(t_vars *vars, int sign)
+void	ft_face_view(t_vars *vars)
 {
 	int	i;
 	int	j;
-	int	k;
 
-	k = 5 * sign;
 	i = 0;
 	j = 0;
 	ft_clear(vars);
@@ -27,7 +25,9 @@ static void	ft_translate_x(t_vars *vars, int sign)
 		j = 0;
 		while (j < vars->map[0][0].cols)
 		{
-			vars->map[i][j].x1 += k;
+			vars->map[i][j].x1 = vars->map[i][j].x;
+			vars->map[i][j].y1 = vars->map[i][j].y;
+			vars->map[i][j].z1 = vars->map[i][j].z;
 			j++;
 		}
 		i++;
@@ -36,13 +36,11 @@ static void	ft_translate_x(t_vars *vars, int sign)
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);
 }
 
-static void	ft_translate_y(t_vars *vars, int sign)
+void	ft_reset_view(t_vars *vars)
 {
 	int	i;
 	int	j;
-	int	k;
 
-	k = 5 * sign;
 	i = 0;
 	j = 0;
 	ft_clear(vars);
@@ -51,24 +49,13 @@ static void	ft_translate_y(t_vars *vars, int sign)
 		j = 0;
 		while (j < vars->map[0][0].cols)
 		{
-			vars->map[i][j].y1 += k;
+			vars->map[i][j].x1 = vars->map[i][j].x;
+			vars->map[i][j].y1 = vars->map[i][j].y;
+			vars->map[i][j].z1 = vars->map[i][j].z;
 			j++;
 		}
 		i++;
 	}
-	ft_link_points(vars);
+	ft_create_iso(vars);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);
-}
-
-void	ft_translation(t_vars *vars, int keycode)
-{
-	if (keycode == UP || keycode == W)
-		ft_translate_y(vars, -1);
-	else if (keycode == DOWN || keycode == S)
-		ft_translate_y(vars, 1);
-	else if (keycode == LEFT || keycode == A)
-		ft_translate_x(vars, -1);
-	else if (keycode == RIGHT || keycode == D)
-		ft_translate_x(vars, 1);
-	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:46:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 17:33:16 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/23 14:38:13 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_init_data(t_vars *vars, t_data *data, int x, int y)
 
 void	ft_init_vars(t_vars *vars, int argc, char **argv)
 {
-	vars->x = 720;
-	vars->y = 480;
+	vars->x = 1920;
+	vars->y = 1080;
 	vars->map = ft_organise(argc, argv, vars->x, vars->y);
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
@@ -56,15 +56,27 @@ void	ft_init_vars(t_vars *vars, int argc, char **argv)
 	ft_init_data(vars, &vars->data, vars->x, vars->y);
 }
 
+void	ft_init_structs(t_shift *shift, t_limit *limit)
+{
+	shift->set = 0;
+	shift->r_x = 0;
+	shift->r_y = 0;
+	shift->r_z = 1;
+	limit->z_in = 0;
+	limit->z_out = 0;
+}
+
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_datum	database;
 
-	ft_init_vars(&vars, argc, argv);
-	ft_create_iso(&vars);
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.data.img, 0, 0);
-	mlx_key_hook(vars.mlx_win, ft_key, &vars);
-	mlx_hook(vars.mlx_win, 17, 0L, ft_mouse, &vars);
-	mlx_loop(vars.mlx);
+	ft_init_vars(&database.vars, argc, argv);
+	ft_init_structs(&database.shift, &database.limit);
+	ft_create_iso(&database.vars);
+	mlx_put_image_to_window(database.vars.mlx, database.vars.mlx_win,
+		database.vars.data.img, 0, 0);
+	mlx_key_hook(database.vars.mlx_win, ft_key, &database.vars);
+	mlx_hook(database.vars.mlx_win, 17, 0L, ft_mouse, &database.vars);
+	mlx_loop(database.vars.mlx);
 	return (0);
 }

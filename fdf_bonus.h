@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 17:28:05 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/23 15:14:07 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,38 @@ typedef enum e_key
 
 typedef struct s_shift
 {
-	int	rotate;
+	int	set;
 	int	r_x;
 	int	r_y;
 	int	r_z;
-	int	translate;
-	int	t_x;
-	int	t_y;
 }	t_shift;
 
+typedef struct s_limit
+{
+	int	z_in;
+	int	z_out;
+}	t_limit;
+
+typedef struct s_datum
+{
+	t_vars	vars;
+	t_shift	shift;
+	t_limit	limit;
+}	t_datum;
+
 //------fdf_key_bonus.c-------------------------------------//
-int		ft_key(int keycode, t_vars *vars/*, t_shift *shift*/);
+int		ft_key(int keycode, t_datum *database);
 //------fdf_zoom_bonus.c-------------------------------------//
-void	ft_zoom(t_vars *vars, int keycode);
+void	ft_zoom(t_vars *vars, int keycode, t_limit *limit);
 //------fdf_clear_bonus.c-------------------------------------//
 void	ft_clear(t_vars *vars);
-
+//------fdf_middle_bonus.c-------------------------------------//
+void	ft_middle_position(t_dot **map);
+//------fdf_reset_bonus.c-------------------------------------//
+void	ft_reset_view(t_vars *vars);
+void	ft_face_view(t_vars *vars);
+//------fdf_translate_bonus.c-------------------------------------//
+void	ft_translation(t_vars *vars, int keycode);
+//------fdf_rotation_bonus.c-------------------------------------//
+void	ft_rotation(t_vars *vars, t_shift *shift, int keycode);
 #endif

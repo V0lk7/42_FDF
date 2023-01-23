@@ -6,11 +6,15 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/20 16:45:55 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/23 15:14:38 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+ifdef BONUS
+NAME 		=	fdf_bonus
+else
 NAME 		=	fdf
+endif
 
 MAKEFLAGS	+=	--no-print-directory
 
@@ -37,7 +41,8 @@ SRCS 		=	fdf_draw.c				fdf_rotate_x.c		\
 				fdf_isometric.c			fdf_user_exit.c		\
 
 SRCS_BONUS	=	fdf_clear_bonus.c		fdf_key_bonus.c		\
-				fdf_zoom_bonus.c	\
+				fdf_zoom_bonus.c		fdf_middle_bonus.c	\
+				fdf_reset_bonus.c 		fdf_rotation_bonus.c\
 
 ifdef BONUS
 SRCS += $(SRCS_BONUS) fdf_bonus.c

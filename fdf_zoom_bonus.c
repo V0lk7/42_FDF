@@ -6,68 +6,75 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:33:53 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 19:22:49 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:43:23 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-static	void	ft_zoom_in(t_dot *dot, int shift_x, int shift_y)
+static	void	ft_zoom_in(t_dot *dot)
 {
 	float	i;
 
-	i = 1.1;
-	//shift_x = shift_y;
-	dot->x1 -= shift_x;
-	dot->y1 -= shift_y;
-	dot->y1 = roundf(dot->y1 * i);
-	dot->x1 = roundf(dot->x1 * i);
-	dot->x1 += shift_x;
-	dot->y1 += shift_y;
+	i = 1.2;
+	dot->y1 = dot->y1 * i;
+	dot->x1 = dot->x1 * i;
 	return ;
 }
 
-static	void	ft_zoom_out(t_dot *dot, int shift_x, int shift_y)
+static	void	ft_zoom_out(t_dot *dot)
 {
-	dot->x1 -= shift_x / 2;
-	dot->y1 -= shift_y / 2;
-	if (dot->x1 < 0)
-		dot->x1 = roundf(dot->x1 * 0.9);
-	else
-		dot->x1 = roundf(dot->x1 * 1.1);
-	if (dot->y1 < 0)
-		dot->y1 = roundf(dot->y1 * 0.9);
-	else
-		dot->y1 = roundf(dot->y1 * 1.1);
-	dot->x1 += shift_x / 2;
-	dot->y1 += shift_y / 2;
+	float	i;
+
+	i = 0.8;
+	dot->y1 = dot->y1 * i;
+	dot->x1 = dot->x1 * i;
 	return ;
 }
 
-void	ft_zoom(t_vars *vars, int keycode)
+static void	ft_apply(t_dot **map, int keycode)
 {
-	int	shift_x;
-	int	shift_y;
 	int	i;
 	int	j;
 
-	shift_x = vars->x;
-	shift_y = vars->y;
 	i = 0;
-	ft_clear(vars);
-	while (i < vars->map[0][0].lines)
+	j = 0;
+	while (i < map[0][0].lines)
 	{
 		j = 0;
-		while (j < vars->map[0][0].cols)
+		while (j < map[0][0].cols)
 		{
 			if (keycode == I)
-				ft_zoom_in(&vars->map[i][j], shift_x, shift_y);
+				ft_zoom_in(&map[i][j]);
 			else if (keycode == O)
-				ft_zoom_out(&vars->map[i][j], shift_x, shift_y);
+				ft_zoom_out(&map[i][j]);
 			j++;
 		}
 		i++;
 	}
+}
+
+void	ft_zoom(t_vars *vars, int keycode, t_limit *limit)
+{
+	if (keycode == I)
+	{
+		if (limit->z_in > 5)
+			return ;
+		limit->z_in += 1;
+		if (limit->z_out > 0)
+			limit->z_out -= 1;
+	}
+	if (keycode == O)
+	{
+		if (limit->z_out > 5)
+			return ;
+		limit->z_out += 1;
+		if (limit->z_in > 0)
+			limit->z_in -= 1;
+	}
+	ft_clear(vars);
+	ft_apply(vars->map, keycode);
+	ft_middle_position(vars->map);
 	ft_link_points(vars);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);
 	return ;
