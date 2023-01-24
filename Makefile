@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/24 12:15:19 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/24 17:57:50 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRCS 		=	fdf_draw.c				fdf_rotate_x.c		\
 				fdf_isometric.c			fdf_user_exit.c		\
 
 SRCS_BONUS	=	fdf_clear_bonus.c		fdf_key_bonus.c		\
-				fdf_zoom_bonus.c	\
+				fdf_zoom_bonus.c		fdf_aitoff_bonus.c	\
 				fdf_reset_bonus.c 		fdf_rotation_bonus.c\
 				fdf_translate.c
 

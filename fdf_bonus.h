@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 12:15:04 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 18:00:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,17 @@ typedef	enum e_zoom
 	OUT
 }	t_zoom;
 
+typedef enum e_side
+{
+	A_X,
+	A_Y
+}	t_side;
+
 typedef enum e_key
 {
 	R = 114,
 	F = 102,
+	G = 103,
 	E = 101,
 	Q = 113,
 	I = 105,
@@ -64,6 +71,7 @@ int		ft_key(int keycode, t_datum *database);
 void	ft_zoom(t_vars *vars, int keycode);
 //------fdf_clear_bonus.c-------------------------------------//
 void	ft_clear(t_vars *vars);
+void	ft_reset_map(t_vars *vars);
 //------fdf_middle_bonus.c-------------------------------------//
 void	ft_middle_position(t_dot **map);
 //------fdf_reset_bonus.c-------------------------------------//
@@ -73,4 +81,6 @@ void	ft_face_view(t_vars *vars);
 void	ft_translation(t_vars *vars, int keycode);
 //------fdf_rotation_bonus.c-------------------------------------//
 void	ft_rotation(t_vars *vars, t_shift *shift, int keycode);
+//------fdf_aitoff.c-------------------------------------//
+void	ft_aitoff(t_vars *vars);
 #endif

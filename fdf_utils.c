@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:28:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 12:24:03 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:16:06 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_free_struct(t_dot **map)
 	return ;
 }
 
-float	ft_calculate_k(t_base *base, t_tool *tool)
+float	ft_coef_k(t_base *base, t_tool *tool)
 {
 	int		i;
 	float	k;

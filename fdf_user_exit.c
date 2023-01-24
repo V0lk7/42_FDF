@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:31:39 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/20 16:01:38 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:54:12 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_close_program(t_vars *vars)
 
 int	ft_keyboard(int keycode, t_vars *vars)
 {
-	printf("%i\n", keycode);
+	printf("keycode = %i\n", keycode);
 	if (keycode == XK_Escape)
 		ft_close_program(vars);
 	return (0);

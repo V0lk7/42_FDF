@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 11:04:01 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:16:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ t_dot	**ft_apply_map(t_base *base, int lengh, int width);
 //------fdf_utils.c--------------------------------//
 void	ft_free_str(char *str, char **list);
 void	ft_free_struct(t_dot **map);
-float	ft_calculate_k(t_base *base, t_tool *tool);
+float	ft_coef_k(t_base *base, t_tool *tool);
 //------fdf_link_points.c--------------------------------//
 void	ft_link_points(t_vars *vars);
 //------fdf_create_iso.c--------------------------------//

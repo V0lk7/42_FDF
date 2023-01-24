@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:36:31 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 10:32:35 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 13:38:23 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ float	ft_calc_ry_x(float x, float z, float angle)
 	sin = sinf(angle);
 	cos = cosf(angle);
 	result = x * cos + (z * sin);
-	printf("result x = %f\n", result);
 	return (result);
 }
 
@@ -34,7 +33,6 @@ float	ft_calc_ry_z(float x, float z, float angle)
 	sin = sinf(angle);
 	cos = cosf(angle);
 	result = (x * -sin) + (z * cos);
-	printf("result z = %f\n", result);
 	return (result);
 }
 
