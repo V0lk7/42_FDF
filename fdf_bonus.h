@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 15:14:07 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:15:04 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef enum e_key
 	RIGHT = 65363,
 	DOWN = 65364,
 	CTRL = 65507,
-	ALT = 65513,
 	ESC = 65307
 }	t_key;
 
@@ -53,23 +52,16 @@ typedef struct s_shift
 	int	r_z;
 }	t_shift;
 
-typedef struct s_limit
-{
-	int	z_in;
-	int	z_out;
-}	t_limit;
-
 typedef struct s_datum
 {
 	t_vars	vars;
 	t_shift	shift;
-	t_limit	limit;
 }	t_datum;
 
 //------fdf_key_bonus.c-------------------------------------//
 int		ft_key(int keycode, t_datum *database);
 //------fdf_zoom_bonus.c-------------------------------------//
-void	ft_zoom(t_vars *vars, int keycode, t_limit *limit);
+void	ft_zoom(t_vars *vars, int keycode);
 //------fdf_clear_bonus.c-------------------------------------//
 void	ft_clear(t_vars *vars);
 //------fdf_middle_bonus.c-------------------------------------//

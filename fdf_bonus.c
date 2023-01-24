@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:46:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 14:38:13 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:32:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ void	ft_init_vars(t_vars *vars, int argc, char **argv)
 	ft_init_data(vars, &vars->data, vars->x, vars->y);
 }
 
-void	ft_init_structs(t_shift *shift, t_limit *limit)
+void	ft_init_structs(t_shift *shift)
 {
 	shift->set = 0;
 	shift->r_x = 0;
 	shift->r_y = 0;
 	shift->r_z = 1;
-	limit->z_in = 0;
-	limit->z_out = 0;
 }
 
 int	main(int argc, char **argv)
@@ -71,7 +69,7 @@ int	main(int argc, char **argv)
 	t_datum	database;
 
 	ft_init_vars(&database.vars, argc, argv);
-	ft_init_structs(&database.shift, &database.limit);
+	ft_init_structs(&database.shift);
 	ft_create_iso(&database.vars);
 	mlx_put_image_to_window(database.vars.mlx, database.vars.mlx_win,
 		database.vars.data.img, 0, 0);

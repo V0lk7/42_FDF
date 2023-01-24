@@ -6,43 +6,43 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:36:16 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/19 15:18:24 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:34:32 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_calc_rx_y(int y, int z, float angle)
+float	ft_calc_rx_y(float y, float z, float angle)
 {
 	float	cos;
 	float	sin;
-	int		result;
+	float	result;
 
 	cos = cosf(angle);
 	sin = sinf(angle);
-	result = round(y * cos - (z * sin));
+	result = y * cos - (z * sin);
 	return (result);
 }
 
-int	ft_calc_rx_z(int y, int z, float angle)
+float	ft_calc_rx_z(float y, float z, float angle)
 {
 	float	cos;
 	float	sin;
-	int		result;
+	float	result;
 
 	cos = cosf(angle);
 	sin = sinf(angle);
-	result = round(y * sin + (z * cos));
+	result = y * sin + (z * cos);
 	return (result);
 }
 
 void	ft_rotation_x(t_dot *dot, float angle)
 {
-	int		ytemp;
+	float	ytemp;
 
-	angle *= PI / 180;
-	ytemp = dot->y - dot->j;
-	dot->y1 = ft_calc_rx_y(ytemp, dot->z, angle) + dot->j;
-	dot->z1 = ft_calc_rx_z(ytemp, dot->z, angle);
+	angle = angle * PI / 180;
+	ytemp = dot->y1 - dot->j;
+	dot->y1 = ft_calc_rx_y(ytemp, dot->z1, angle) + dot->j;
+	dot->z1 = ft_calc_rx_z(ytemp, dot->z1, angle);
 	return ;
 }

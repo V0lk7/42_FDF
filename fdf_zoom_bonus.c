@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:33:53 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 13:43:23 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 10:13:08 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,8 @@ static void	ft_apply(t_dot **map, int keycode)
 	}
 }
 
-void	ft_zoom(t_vars *vars, int keycode, t_limit *limit)
+void	ft_zoom(t_vars *vars, int keycode)
 {
-	if (keycode == I)
-	{
-		if (limit->z_in > 5)
-			return ;
-		limit->z_in += 1;
-		if (limit->z_out > 0)
-			limit->z_out -= 1;
-	}
-	if (keycode == O)
-	{
-		if (limit->z_out > 5)
-			return ;
-		limit->z_out += 1;
-		if (limit->z_in > 0)
-			limit->z_in -= 1;
-	}
 	ft_clear(vars);
 	ft_apply(vars->map, keycode);
 	ft_middle_position(vars->map);

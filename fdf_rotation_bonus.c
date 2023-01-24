@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:34:33 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 15:24:35 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:36:29 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	ft_apply_ry(t_vars *vars, float theta)
 		}
 		i++;
 	}
-
 }
 
 static void	ft_apply_rz(t_vars *vars, float theta)
@@ -68,7 +67,6 @@ static void	ft_apply_rz(t_vars *vars, float theta)
 		}
 		i++;
 	}
-
 }
 
 static void	ft_rotate(t_vars *vars, t_shift *shift, int sign)
@@ -87,7 +85,6 @@ static void	ft_rotate(t_vars *vars, t_shift *shift, int sign)
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);
 }
 
-
 void	ft_rotation(t_vars *vars, t_shift *shift, int keycode)
 {
 	if (shift->set == 1 && (keycode == X || keycode == Y || keycode == Z))
@@ -104,12 +101,12 @@ void	ft_rotation(t_vars *vars, t_shift *shift, int keycode)
 		shift->set = 0;
 		return ;
 	}
-	else if (shift == 0 && keycode == CTRL)
+	else if (keycode == CTRL)
 		shift->set = 1;
-	else if (keycode == E)
-		ft_rotate(vars , shift, 1);
-	else if (keycode == Q)
-		ft_rotate(vars , shift, -1);
+	else if (keycode == E && shift->set <= 0)
+		ft_rotate(vars, shift, 1);
+	else if (keycode == Q && shift->set <= 0)
+		ft_rotate(vars, shift, -1);
 	else
 		return ;
 }

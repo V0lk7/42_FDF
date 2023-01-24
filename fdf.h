@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/23 14:09:44 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:04:01 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ typedef struct	s_data
 //	Coordinate of each point	//
 typedef struct	s_dot
 {
-	int	x;
-	int	y;
-	int	z;
-	int	x1;
-	int	y1;
-	int	z1;
-	int	i;
-	int	j;
-	int	k;
+	float	x;
+	float	y;
+	float	z;
+	float	x1;
+	float	y1;
+	float	z1;
+	int		i;
+	int		j;
+	int		k;
 	int	cols;
 	int	lines;
 	int	color;
@@ -63,8 +63,8 @@ typedef	struct	s_line
 {
 	float	x0;
 	float	y0;
-	int		dx;
-	int		dy;
+	float	dx;
+	float	dy;
 	float	xinc;
 	float	yinc;
 }	t_line;
@@ -104,16 +104,16 @@ void	ft_pixel_put(t_vars *vars, int x, int y, int color);
 void	ft_dda(t_vars *vars, t_dot *dot1, t_dot *dot2, int color);
 //------fdf_rotate_x.c---------------------------------//
 void	ft_rotation_x(t_dot *dot, float angle);
-int		ft_calc_rx_y(int y, int z, float angle);
-int		ft_calc_rx_z(int y, int z, float angle);
+float	ft_calc_rx_y(float y, float z, float angle);
+float	ft_calc_rx_z(float y, float z, float angle);
 //------fdf_rotate_y.c---------------------------------//
 void	ft_rotation_y(t_dot *dot, float angle);
-int		ft_calc_ry_x(int x, int z, float angle);
-int		ft_calc_ry_z(int x, int z, float angle);
+float	ft_calc_ry_x(float x, float z, float angle);
+float	ft_calc_ry_z(float x, float z, float angle);
 //------fdf_rotate_z.c---------------------------------//
 void	ft_rotation_z(t_dot *dot, float angle);
-int		ft_calc_rz_x(int x, int y, float angle);
-int		ft_calc_rz_y(int x, int y, float angle);
+float	ft_calc_rz_x(float x, float y, float angle);
+float	ft_calc_rz_y(float x, float y, float angle);
 //------fdf_parsing.c--------------------------------//
 int		ft_add_color(char *str);
 int		ft_find_comma(char *str);
@@ -140,6 +140,8 @@ float	ft_calculate_k(t_base *base, t_tool *tool);
 void	ft_link_points(t_vars *vars);
 //------fdf_create_iso.c--------------------------------//
 void	ft_create_iso(t_vars *vars);
+//------fdf_middle_position.c--------------------------------//
+void	ft_middle_position(t_dot **map);
 //------fdf_user_exit.c--------------------------------//
 void	ft_close_program(t_vars *vars);
 int		ft_keyboard(int keycode, t_vars *vars);
