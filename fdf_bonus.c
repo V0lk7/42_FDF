@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:46:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 13:49:21 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:21:39 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ int	main(int argc, char **argv)
 
 	ft_init_vars(&database.vars, argc, argv);
 	ft_init_structs(&database.shift);
+	database.zlim = 0;
 	ft_create_iso(&database.vars);
 	mlx_put_image_to_window(database.vars.mlx, database.vars.mlx_win,
 		database.vars.data.img, 0, 0);
-	mlx_key_hook(database.vars.mlx_win, ft_key, &database.vars);
+	mlx_hook(database.vars.mlx_win, 2, 1L << 0, ft_key, &database.vars);
 	mlx_hook(database.vars.mlx_win, 17, 0L, ft_mouse, &database.vars);
 	mlx_loop(database.vars.mlx);
 	return (0);

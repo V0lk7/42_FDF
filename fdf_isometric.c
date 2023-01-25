@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:40:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 12:51:12 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 15:03:51 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	ft_resize(t_vars *vars)
 	{
 		while (j < vars->map[0][0].cols)
 		{
-			vars->map[i][j].x1 *= 0.55;
-			vars->map[i][j].y1 *= 0.55;
+			vars->map[i][j].x1 *= 0.45;
+			vars->map[i][j].y1 *= 0.45;
 			j++;
 		}
 		j = 0;
@@ -43,8 +43,8 @@ void	ft_create_iso(t_vars *vars)
 	{
 		while (j < vars->map[0][0].cols)
 		{
+			ft_rotation_x(&vars->map[i][j], 35);
 			ft_rotation_z(&vars->map[i][j], 45);
-			ft_rotation_x(&vars->map[i][j], 32);
 			j++;
 		}
 		j = 0;

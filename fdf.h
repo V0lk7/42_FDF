@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 17:16:37 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:39:42 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,6 @@ void	ft_dda(t_vars *vars, t_dot *dot1, t_dot *dot2, int color);
 void	ft_rotation_x(t_dot *dot, float angle);
 float	ft_calc_rx_y(float y, float z, float angle);
 float	ft_calc_rx_z(float y, float z, float angle);
-//------fdf_rotate_y.c---------------------------------//
-void	ft_rotation_y(t_dot *dot, float angle);
-float	ft_calc_ry_x(float x, float z, float angle);
-float	ft_calc_ry_z(float x, float z, float angle);
 //------fdf_rotate_z.c---------------------------------//
 void	ft_rotation_z(t_dot *dot, float angle);
 float	ft_calc_rz_x(float x, float y, float angle);
@@ -140,7 +136,7 @@ float	ft_coef_k(t_base *base, t_tool *tool);
 void	ft_link_points(t_vars *vars);
 //------fdf_create_iso.c--------------------------------//
 void	ft_create_iso(t_vars *vars);
-//------fdf_middle_position.c--------------------------------//
+//------fdf_middle.c--------------------------------//
 void	ft_middle_position(t_dot **map);
 //------fdf_user_exit.c--------------------------------//
 void	ft_close_program(t_vars *vars);

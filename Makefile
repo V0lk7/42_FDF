@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/24 17:57:50 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/25 14:41:42 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,17 +33,27 @@ INCLUDES	=	libft/include 	\
 
 BUILD_DIR 	= 	.build
 
-SRCS 		=	fdf_draw.c				fdf_rotate_x.c		\
-				fdf_rotate_y.c			fdf_rotate_z.c		\
-				fdf_parsing.c			fdf_middle.c		\
-				fdf_parsing_utils.c		fdf_utils.c 		\
-				fdf_shifting.c 			fdf_link_points.c 	\
-				fdf_isometric.c			fdf_user_exit.c		\
+SRCS 		=	fdf_draw.c				\
+				fdf_rotate_x.c			\
+				fdf_rotate_z.c			\
+				fdf_parsing.c			\
+				fdf_middle.c			\
+				fdf_parsing_utils.c		\
+				fdf_utils.c 			\
+				fdf_shifting.c 			\
+				fdf_link_points.c 		\
+				fdf_isometric.c			\
+				fdf_user_exit.c			\
 
-SRCS_BONUS	=	fdf_clear_bonus.c		fdf_key_bonus.c		\
-				fdf_zoom_bonus.c		fdf_aitoff_bonus.c	\
-				fdf_reset_bonus.c 		fdf_rotation_bonus.c\
-				fdf_translate.c
+SRCS_BONUS	=	fdf_clear_bonus.c		\
+				fdf_key_bonus.c			\
+				fdf_zoom_bonus.c		\
+				fdf_face_bonus.c 		\
+				fdf_aitoff_bonus.c		\
+				fdf_reset_bonus.c 		\
+				fdf_rotation_bonus.c 	\
+				fdf_rotate_y_bonus.c	\
+				fdf_translate.c			\
 
 ifdef BONUS
 SRCS += $(SRCS_BONUS) fdf_bonus.c

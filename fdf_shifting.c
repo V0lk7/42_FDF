@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:30:49 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 17:16:16 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:56:55 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	ft_set_tool(t_base *base, t_tool *tool, int lengh, int width)
 	tool->incr_xo = tool->incr_x;
 	tool->incr_yo = tool->incr_y;
 	tool->k = ft_coef_k(base, tool);
+	if (tool->k < 0)
+		tool->k *= -1;
 	return ;
 }
 

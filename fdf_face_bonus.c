@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_reset_bonus.c                                  :+:      :+:    :+:   */
+/*   fdf_face_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 13:44:56 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/25 13:52:13 by jduval           ###   ########.fr       */
+/*   Created: 2023/01/25 13:49:01 by jduval            #+#    #+#             */
+/*   Updated: 2023/01/25 15:07:42 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	ft_reset_view(t_vars *vars)
+void	ft_face_view(t_vars *vars)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,6 @@ void	ft_reset_view(t_vars *vars)
 		}
 		i++;
 	}
-	ft_create_iso(vars);
+	ft_link_points(vars);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);
 }

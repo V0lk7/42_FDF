@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 18:00:37 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:21:55 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,20 @@ typedef struct s_datum
 {
 	t_vars	vars;
 	t_shift	shift;
+	int		zlim;
 }	t_datum;
 
 //------fdf_key_bonus.c-------------------------------------//
 int		ft_key(int keycode, t_datum *database);
 //------fdf_zoom_bonus.c-------------------------------------//
-void	ft_zoom(t_vars *vars, int keycode);
+void	ft_zoom(t_vars *vars, int keycode, int *zlimit);
+//------fdf_rotate_y_bonus.c-------------------------------------//
+void	ft_rotation_y(t_dot *dot, float angle);
+float	ft_calc_ry_x(float x, float z, float angle);
+float	ft_calc_ry_z(float x, float z, float angle);
 //------fdf_clear_bonus.c-------------------------------------//
 void	ft_clear(t_vars *vars);
 void	ft_reset_map(t_vars *vars);
-//------fdf_middle_bonus.c-------------------------------------//
-void	ft_middle_position(t_dot **map);
 //------fdf_reset_bonus.c-------------------------------------//
 void	ft_reset_view(t_vars *vars);
 void	ft_face_view(t_vars *vars);

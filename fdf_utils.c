@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:28:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/24 17:16:06 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:59:02 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ float	ft_coef_k(t_base *base, t_tool *tool)
 {
 	int		i;
 	float	k;
-	int		max;
-	int		min;
+	float	max;
+	float	min;
 
 	i = 0;
 	k = 0;
@@ -68,11 +68,11 @@ float	ft_coef_k(t_base *base, t_tool *tool)
 			min = base[i].z_base;
 		i++;
 	}
-	if (tool->incr_y > tool->incr_x)
-		k = (tool->incr_y - (abs(max - min))) / (abs(max - min));
+	if (min == 0 && max == 0)
+		k = 0;
+	else if (tool->incr_y > tool->incr_x)
+		k = (tool->incr_y - (fabs(max - min))) / (fabs(max - min));
 	else
-		k = (tool->incr_x - (abs(max - min))) / (abs(max - min));
-	if (k < 0)
-		k *= -1;
+		k = (tool->incr_x - (fabs(max - min))) / (fabs(max - min));
 	return (k);
 }
