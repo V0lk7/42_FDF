@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:46:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:10:48 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:42:49 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main(int argc, char **argv)
 {
 	t_datum	database;
 
+	database.aitoff = 0;
 	ft_init_vars(&database.vars, argc, argv);
 	ft_init_structs(&database.shift);
 	ft_create_iso(&database.vars);

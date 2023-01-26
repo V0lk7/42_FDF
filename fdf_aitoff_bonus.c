@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:06:40 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:10:40 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:45:51 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static float	ft_do_the_math(float lon, float lat, int side)
 	return (result);
 }
 
-static void	ft_set_bot(t_dot **map, int meridian)
+static void	ft_set(t_dot **map, int meridian)
 {
 	int		i;
 	int		j;
@@ -56,7 +56,7 @@ static void	ft_set_aitoff(t_dot **map)
 	int	meridian;
 
 	meridian = map[0][0].lines / 2;
-	ft_set_bot(map, meridian);
+	ft_set(map, meridian);
 }
 
 void	ft_aitoff(t_vars *vars, int *aitoff)
