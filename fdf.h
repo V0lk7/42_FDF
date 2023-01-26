@@ -6,22 +6,22 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:13:44 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:35:34 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "mlx.h"
-#include "mlx/mlx_int.h"
-#include <math.h>
-#include "libft.h"
-#include <stdio.h>
+# include "mlx.h"
+# include "mlx/mlx_int.h"
+# include <math.h>
+# include "libft.h"
+# include <stdio.h>
 
-#define PI 3.1415926
+# define PI 3.1415926
 
-typedef struct	s_data 
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -31,7 +31,7 @@ typedef struct	s_data
 }	t_data;
 
 //	Coordinate of each point	//
-typedef struct	s_dot
+typedef struct s_dot
 {
 	float	x;
 	float	y;
@@ -42,15 +42,15 @@ typedef struct	s_dot
 	int		i;
 	int		j;
 	int		k;
-	int	cols;
-	int	lines;
-	int	color;
+	int		cols;
+	int		lines;
+	int		color;
 }	t_dot;
 
 //	Img data					//
-typedef struct	s_vars
+typedef struct s_vars
 {
-	t_data 	data;
+	t_data	data;
 	int		x;
 	int		y;
 	t_dot	**map;
@@ -59,7 +59,7 @@ typedef struct	s_vars
 }	t_vars;
 
 //	Struct to draw line		//
-typedef	struct	s_line
+typedef struct s_line
 {
 	float	x0;
 	float	y0;
@@ -70,7 +70,7 @@ typedef	struct	s_line
 }	t_line;
 
 //	Struct parsing set		//
-typedef struct	s_base
+typedef struct s_base
 {
 	int	z_base;
 	int	color_base;
@@ -80,7 +80,7 @@ typedef struct	s_base
 }	t_base;
 
 //	Struct for create the map	//
-typedef	struct	s_tool
+typedef struct s_tool
 {
 	float	x_origin;
 	float	y_origin;

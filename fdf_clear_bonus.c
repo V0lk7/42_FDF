@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:23 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:11:22 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:36:39 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	ft_reset_map(t_vars *vars)
 {
