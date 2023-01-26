@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:19:29 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:12:23 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 14:00:52 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	ft_key(int keycode, t_datum *database)
 	if (keycode == ESC)
 		ft_close_program(&database->vars);
 	else if (keycode == I || keycode == O)
-		ft_limit_zoom(&database->vars, keycode, database->flag);
+		ft_limit_zoom(&database->vars, keycode, database->aitoff);
 	else if (keycode == R)
-		ft_reset_view(&database->vars);
+		ft_reset_view(&database->vars, &database->aitoff);
 	else if (keycode == F)
-		ft_face_view(&database->vars);
+		ft_face_view(&database->vars, &database->aitoff);
 	else if (keycode == G)
-		ft_aitoff(&database->vars);
+		ft_aitoff(&database->vars, &database->aitoff);
 	ft_translation(&database->vars, keycode);
 	ft_rotation(&database->vars, &database->shift, keycode);
 	return (0);
