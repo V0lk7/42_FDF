@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:09:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 13:10:56 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:49:31 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "fdf.h"
 
-typedef	enum e_zoom
+typedef enum e_zoom
 {
 	IN,
 	OUT

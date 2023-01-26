@@ -6,19 +6,19 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:05:52 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/12 12:48:43 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:48:27 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_base(char c, int len)
 {
 	char	*base1;
-	char 	*base2;
+	char	*base2;
 	int		i;	
 
 	i = 0;
 	base1 = "0123456789ABCDEF";
-	base2 = "0123456789abcdef";	
+	base2 = "0123456789abcdef";
 	while (i < len)
 	{
 		if (c == base1[i] || c == base2[i])
