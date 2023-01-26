@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/26 13:17:49 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/26 13:43:58 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRCS_BONUS	=	fdf_clear_bonus.c		\
 				fdf_reset_bonus.c 		\
 				fdf_rotation_bonus.c 	\
 				fdf_rotate_y_bonus.c	\
-				fdf_translate.c			\
+				fdf_translate_bonus.c	\
 
 ifdef BONUS
 SRCS += $(SRCS_BONUS) fdf_bonus.c
@@ -70,7 +70,7 @@ DEPS = $(OBJS:.o=.d)
 
 CC 			=	clang
 
-CFLAGS 		= -Werror -Wextra -Wall -ggdb3 -O3
+CFLAGS 		= 	-Werror -Wextra -Wall
 
 CPPFLAGS 	=	-MMD -MP $(addprefix -I,$(INCLUDES))
 
@@ -90,13 +90,13 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
-	@$(MAKE) -C $(dir $@)
+	$(MAKE) -C $(dir $@)
 
 $(BUILD_DIR)/%.o : %.c
 	@$(DIRDUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
--include $(DEPS) test.mk
+-include $(DEPS)
 
 bonus: 
 	$(MAKE) BONUS=1 all
