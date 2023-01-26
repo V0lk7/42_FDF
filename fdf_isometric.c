@@ -6,13 +6,13 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:40:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/25 15:03:51 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:12:11 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	ft_resize(t_vars *vars)
+void	ft_resize(t_vars *vars, float k)
 {
 	int	i;
 	int	j;
@@ -23,8 +23,8 @@ static void	ft_resize(t_vars *vars)
 	{
 		while (j < vars->map[0][0].cols)
 		{
-			vars->map[i][j].x1 *= 0.45;
-			vars->map[i][j].y1 *= 0.45;
+			vars->map[i][j].x1 *= k;
+			vars->map[i][j].y1 *= k;
 			j++;
 		}
 		j = 0;
@@ -50,7 +50,7 @@ void	ft_create_iso(t_vars *vars)
 		j = 0;
 		i++;
 	}
-	ft_resize(vars);
+	ft_resize(vars, 0.45);
 	ft_middle_position(vars->map);
 	ft_link_points(vars);
 	return ;

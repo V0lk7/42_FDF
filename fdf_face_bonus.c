@@ -6,19 +6,20 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:49:01 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/25 15:07:42 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:11:54 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	ft_face_view(t_vars *vars)
+void	ft_face_view(t_vars *vars, int *aitoff)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
+	*aitoff = 0;
 	ft_clear(vars);
 	while (i < vars->map[0][0].lines)
 	{

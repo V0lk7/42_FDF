@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/25 14:39:42 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:13:44 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		ft_find_comma(char *str);
 t_bool	ft_valid_file(char *argv);
 char	*ft_get_map(char *argv);
 t_dot	**ft_organise(int argc, char **argv, int lengh, int width);
-//------fdf_parsing_utils.c--------------------------------//
+//------fdf_parsing2.c--------------------------------//
 ssize_t	ft_count_arg(char *str);
 ssize_t	ft_count_len(char **line);
 void	ft_put_data(t_base *base, char **str, int line, int col);
@@ -135,6 +135,7 @@ float	ft_coef_k(t_base *base, t_tool *tool);
 //------fdf_link_points.c--------------------------------//
 void	ft_link_points(t_vars *vars);
 //------fdf_create_iso.c--------------------------------//
+void	ft_resize(t_vars *vars, float k);
 void	ft_create_iso(t_vars *vars);
 //------fdf_middle.c--------------------------------//
 void	ft_middle_position(t_dot **map);

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:06:40 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/25 13:38:48 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:10:40 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ static void	ft_set_aitoff(t_dot **map)
 	ft_set_bot(map, meridian);
 }
 
-void	ft_aitoff(t_vars *vars)
+void	ft_aitoff(t_vars *vars, int *aitoff)
 {
+	*aitoff = 1;
 	ft_reset_map(vars);
 	ft_clear(vars);
 	ft_set_aitoff(vars->map);
+	ft_resize(vars, 50);
 	ft_middle_position(vars->map);
 	ft_link_points(vars);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->data.img, 0, 0);

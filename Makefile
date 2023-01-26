@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:27:39 by jduval            #+#    #+#              #
-#    Updated: 2023/01/25 14:41:42 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/26 13:17:49 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRCS 		=	fdf_draw.c				\
 				fdf_rotate_z.c			\
 				fdf_parsing.c			\
 				fdf_middle.c			\
-				fdf_parsing_utils.c		\
+				fdf_parsing2.c			\
 				fdf_utils.c 			\
 				fdf_shifting.c 			\
 				fdf_link_points.c 		\
@@ -111,7 +111,7 @@ clean:
 
 fclean: clean 
 	@${MAKE} -C libft/ fclean
-	rm -f $(NAME) fdf_bonus
+	rm -f fdf fdf_bonus
 .PHONY: fclean
 
 re: fclean all
