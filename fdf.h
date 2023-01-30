@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:18:46 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/26 15:50:56 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/30 11:45:58 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_init_vars(t_vars *vars, int argc, char **argv);
 void	ft_init_data(t_vars *vars, t_data *data, int x, int y);
 //------fdf_draw.c-------------------------------------//
 void	ft_pixel_put(t_vars *vars, int x, int y, int color);
+int		ft_check_points(t_dot *dot1, t_dot *dot2, int x, int y);
 void	ft_dda(t_vars *vars, t_dot *dot1, t_dot *dot2, int color);
 //------fdf_rotate_x.c---------------------------------//
 void	ft_rotation_x(t_dot *dot, float angle);
